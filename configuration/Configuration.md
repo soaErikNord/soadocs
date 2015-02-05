@@ -1,20 +1,5 @@
 #SOA Software Community Manager&reg; Customization Guide for verison 7.2
 
-| Menu | |
-| | link |
-  | link |
-  | Link | |
-|
-
-| Menu          | Are           | Cool  |
-| | Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
 ##Set-up
 
 ###Tools
