@@ -1,5 +1,11 @@
 #SOA Software Community Manager&reg; Customization Guide for verison 7.2
 
+| Menu | |
+| | link |
+  | link |
+  | Link | |
+|
+
 ##Set-up
 
 ###Tools
@@ -69,4 +75,4 @@ During development, it may be required to debug Javascript.  The browser develop
 - Select the configuration tab
 - Select the category com.soa.atmosphere<br/>
 <img src="categoryAtmosphereConsole.png" width="350px">
-- Change 'atmosphere.console.config.stealEnvironment' from 'production' to 'development'
+- Change 'atmosphere.console.config.stealEnvironment' from 'production' to 'development' |
