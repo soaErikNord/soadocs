@@ -15,7 +15,7 @@ Custom less
 2.  Click on the administration wrench in the header
  ![Administration Header](adminHeader.png)
 3.  Click on the ![Config](config.png)  option in the left navigation panel
-4.  Validate that the default theme is selected in the Theme: drop down.
+4.  Validate that the default theme is selected in the Theme: drop down.<br/>
  ![Theme](theme.png)
 5.  Under the Download box, click on the ![Download](download.png) button.
 6.  Save the file to the less file in the folder structure that was created during set-up.
