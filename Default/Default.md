@@ -13,29 +13,29 @@ Custom less
 #####Download custom.less
 1.  Log into system as administrator (http(s)://<hostname>:<port>/enterpriseapi/)
 2.  Click on the administration wrench in the header<br/>
- ![Administration Header](adminHeader.png)
-3.  Click on the ![Config](config.png)  option in the left navigation panel
+ ![Administration Header](../images/adminHeader.png)
+3.  Click on the ![Config](../images/config.png)  option in the left navigation panel
 4.  Validate that the default theme is selected in the Theme: drop down.<br/>
- ![Theme](theme.png)
-5.  Under the Download box, click on the ![Download](download.png) button.
+ ![Theme](../images/theme.png)
+5.  Under the Download box, click on the ![Download](../images/download.png) button.
 6.  Save the file to the less file in the folder structure that was created during set-up.
 7.  Verify the downloaded file is named custom.less.
 
 #####Upload and Rebuild Styles
 1.  Log into system as administrator (http(s)://<hostname>:<port>/enterpriseapi/)
 2.  Click on the administration wrench in the header<br/>
- ![Administration Header](adminHeader.png)
-3.  Click on the ![Config](config.png) option in the left navigation panel
+ ![Administration Header](../images/adminHeader.png)
+3.  Click on the ![Config](../images/config.png) option in the left navigation panel
 4.  Validate that the default theme is selected in the Theme: drop down.<br/>
- ![Theme](theme.png)
-5.  Under the Upload box, click on the ![Upload](upload.png) button.
+ ![Theme](../images/theme.png)
+5.  Under the Upload box, click on the ![Upload](../images/upload.png) button.
 6.  Click on the Browse button.
 7.  Browse to the location of the modified custom.less file, select it and click the Open button.
 8.  Click on the Upload button.
 9.  This will automatically kick off a rebuild of the styles.<br/>
- ![Rebuild Styles](rebuildStyles.png)
+ ![Rebuild Styles](../images/rebuildStyles.png)
 10. Click the OK button once everything successfully builds.<br/>
- ![Success](success.png)
+ ![Success](../images/success.png)
 11. Either clear out the browser cache, open a private (incognito) window or a new browser all together, and validate the changes are properly displaying.
 
 #####Update Company Logo
@@ -50,23 +50,23 @@ Custom less
 4.  Zip up the file directory under the resources folder<br/>
 5.  Log into the default theme as administrator (http(s)://<hostname>:<port>/enterpriseapi)
 6.  Click on the administration wrench in the header.
- ![Administration Header](adminHeader.png)
-7.  Click on the ![Config](config.png) option in the left navigation panel<br/>
-8.  Click on the ![Resources](resources.png) link.<br/>
+ ![Administration Header](../images/adminHeader.png)
+7.  Click on the ![Config](../images/config.png) option in the left navigation panel<br/>
+8.  Click on the ![Resources](../images/resources.png) link.<br/>
 9.  Under the Resources section, click on the File Manager button.
- ![Configure Resources](configResources.png)
+ ![Configure Resources](../images/configResources.png)
 10. Click on Upload a Zip Archive.<br/>
- ![Upload Zip](uploadZip.png)
+ ![Upload Zip](../images/uploadZip.png)
 11. Browse to the zip file, select it and click on the Open button.
 12. Click on the Upload button.<br/>
- ![File Upload](fileUpload.png)
-13. Click on the   button to close the CMS window.
-14. Click on the   link from the left navigation
+ ![File Upload](../images/fileUpload.png)
+13. Click on the ![Close](../images/close.png) button to close the CMS window.
+14. Click on the ![Custom Styles](../images/customstyles.png) link from the left navigation
 15. Validate that the default theme is selected in the Theme: drop down.<br/>
- ![Theme](theme.png)
+ ![Theme](../images/theme.png)
 16. In the Rebuild Styles box, click on the Rebuild Styles button.
 17. Either clear out the browser cache, open a private (incognito) window or a new browser all together, and validate that the new company logo is properly displaying.
- ![New Header](newHeader.png)
+ ![New Header](../images/newHeader.png)
 
 #####Text, Font, Colors
 
@@ -338,9 +338,9 @@ steal(function () {
 24. Refresh cache
 25. Validate that the changes by going to ‘../home/custom/’
 26. Should see a page that looks something like below:
- ![Customized Widget](acmeWidget.png)
+ ![Customized Widget](../images/acmeWidget.png)
 27. Enter the a First and Last name and click on the   button.  You will see the following screen:
- ![Customized Summary](acmeSummary.png)
+ ![Customized Summary](../images/acmeSummary.png)
 28. Download the code:
 Reference: [http://docs.soa.com/cm/share/cm_customizing_ui.htm#adding_new_views_or_widgets](http://docs.soa.com/cm/share/cm_customizing_ui.htm#adding_new_views_or_widgets)
 
