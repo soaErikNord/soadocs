@@ -77,9 +77,9 @@ Custom less<br/>
 ###Resource
 
 ####Background, technologies
-CanJS<br/>
-* [http://canjs.com](http://canjs.com)<br/>
-JQuery<br/>
+CanJS
+* [http://canjs.com](http://canjs.com)
+JQuery
 * [http://jquery.com](http://jquery.com)
 
 ####Creating new views
@@ -114,7 +114,7 @@ user_tools | |
  
 #####Footer
 Most customization start with updating the footer, and changing it to a company specific footer.  The footer can be replaced by adding a new ejs view to the customized folder, ‘DEMO -> Dev.  A new directory would need to be named footer, with a folder inside of this directory called views.  A new footer.ejs file would be added to this directory.<br/>
- ![Footer](../images/footerlisting.png)
+ ![Footer](../images/footerlisting.png)<br/>
 The ejs file becomes the new view of the footer.  An example of a new footer view would be:
 ```html
 <link href="/resources/theme/developer/Demo/Dev/footer/views/social-buttons.css" rel="stylesheet">
@@ -179,7 +179,7 @@ Upload the new footer to the environment and test:<br/>
 #####Header
 
 ####Helper Objects
-soa.cm.alert<br/>
+soa.cm.alert
 * `alert` is a box that can be dismissed that delivers feedback to the user
 * Implementation
 ```javascript
@@ -192,7 +192,7 @@ soa.cm.alert<br/>
 "close" : true
 }) %>
 ```
-soa.cm.borderlessbutton<br/>
+soa.cm.borderlessbutton
 * `borderlessbutton` is a button that looks like an image, normally used when the class exists in the stylesheet
 * Implementation
 ```javascript
