@@ -79,6 +79,7 @@ Custom less<br/>
 ####Background, technologies
 CanJS
 * [http://canjs.com](http://canjs.com)
+
 JQuery
 * [http://jquery.com](http://jquery.com)
 
@@ -201,7 +202,7 @@ soa.cm.borderlessbutton
     "name" : "Thumbs up"
 })%>
 ```
-soa.cm.card<br/>
+soa.cm.card
 * `card` is a set of HTML elements that display information neatly on a presentable card. This card can contain a title, a subtitle, a legend (containing multiple elements), and a description, as well as an image of the subject of information ("avatar")
 * Implementation
 ```javascript
@@ -213,7 +214,7 @@ soa.cm.card<br/>
     "url" : "#!url"
 }) %>
 ```
-soa.cm.checkboxCollectionFormRow<br/>
+soa.cm.checkboxCollectionFormRow
 * `checkboxCollectionFormRow` is a set of HTML objects that can contain at least one checbkox input element, helper text, and a tooltip. They are enclosed in a UL element, enclosed by a DIV.
 * Implementation
 ```javascript
@@ -234,7 +235,7 @@ soa.cm.checkboxCollectionFormRow<br/>
     ]
 })%>
 ```
-soa.cm.checkBoxFormRow<br/>
+soa.cm.checkBoxFormRow
 * `checkBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph.
 * Implementation
 ```javascript
@@ -244,7 +245,7 @@ soa.cm.checkBoxFormRow<br/>
     "value" : "YES"
 }) %>
 ```
-soa.cm.contentButton<br/>
+soa.cm.contentButton
 * `contentButton` is a box that appears in the content area of the screen to inform the user of any errors
 * Implementation
 ```javascript
@@ -252,7 +253,7 @@ soa.cm.contentButton<br/>
 "name" : "Export Credentials"
 })%>
 ```
-soa.cm.contentHeader<br/>
+soa.cm.contentHeader
 ** TODO – ASK ARJUN **
 soa.cm.emailTextBoxFormRow
 * `emailTextBoxFormRow` is a set of HTML object that can contain a text input element, helper text, and a tooltip.  It is enclosed in a paragraph.  The field is required to be an email address.
@@ -265,7 +266,7 @@ soa.cm.emailTextBoxFormRow
     "value" : "email@email.com"
 }) %>
 ```
-soa.cm.enclosedTextBoxFormRow<br/>
+soa.cm.enclosedTextBoxFormRow
 * `enclosedTextBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph
 * Implementation
 ```javascript
@@ -276,7 +277,7 @@ soa.cm.enclosedTextBoxFormRow<br/>
     "value" : "123456789"
 }) %>
 ```
-soa.cm.error<br/>
+soa.cm.error
 * `error` is a box that can be dismissed that delivers feedback to the user regarding an error that occurred
 * Implementation
 ```javascript
@@ -287,7 +288,7 @@ soa.cm.error<br/>
     "classes" : "soa-ui-cm-example soa-ui-cm-example2"
 }) %>
 ```
-soa.cm.fileUploadFormRow<br/>
+soa.cm.fileUploadFormRow
 * `fileUploadFormRow` is a set of HTML objects that can contain a file upload element, helper text, and a tooltip. It is enclosed in a paragraph.
 * Implementation
 ```javascript
@@ -297,7 +298,7 @@ soa.cm.fileUploadFormRow<br/>
     "helperText": "Select an avatar to upload from your hard drive"
 }) %>
 ```
-soa.cm.formButton<br/>
+soa.cm.formButton
 * `formButton` is a button that appears at the bottom of a form
 * Implementation
 ```javascript
@@ -305,7 +306,7 @@ soa.cm.formButton<br/>
 "name": "Save"
 }) %>
 ```
-soa.cm.fromAndToDatePickersFormRow<br/>
+soa.cm.fromAndToDatePickersFormRow
 * `fromAndToDatePickersFormRow` is a set of HTML objects that can contain input elements that when clicked show a calendar. The user can pick dates from the calendar to show a "from" date and a "to" date and thus have a date range selected when complete.
 * Implementation
 ```javascript
@@ -332,7 +333,7 @@ soa.cm.fromAndToDatePickersFormRow<br/>
     }
 });%>
 ```
-soa.cm.image<br/>
+soa.cm.image
 * `image` is a part of an entire navigation bar and needs to be placed inside
 * Implementation
 ```javascript
@@ -340,7 +341,7 @@ soa.cm.image<br/>
     "url": "/path/to/image.png"
 }) %>
 ```
-soa.cm.imageAvatarWithName<br/>
+soa.cm.imageAvatarWithName
 * `imageAvatarWithName` is an avatar image with a name underneath
 * Implementation
 ```javascript
@@ -350,7 +351,7 @@ soa.cm.imageAvatarWithName<br/>
     "name" : "John Smith",
 }) %>
 ```
-soa.cm.imageAvatarWithTag<br/>
+soa.cm.imageAvatarWithTag
 * `imageAvatarWithTag` is an avatar image with a name underneath
 * Implementation
 ```javascript
@@ -359,7 +360,7 @@ soa.cm.imageAvatarWithTag<br/>
     "name" : "John Smith",
 }) %>
 ```
-soa.cm.imageButton<br/>
+soa.cm.imageButton
 * `imageButton` is a button that looks like an image, normally used when the image is pulled from the database
 * Implementation
 ```javascript
@@ -369,7 +370,7 @@ soa.cm.imageButton<br/>
     "title" : "Facebook" 
 }) %>
 ```
-soa.cm.imageUpload<br/>
+soa.cm.imageUpload
 * `imageUpload` is an image with an optional upload button layered on top
 * Implementation
 ```javascript
@@ -379,7 +380,7 @@ soa.cm.imageUpload<br/>
     "message" : "Upload a new avatar"
 }) %>
 ```
-soa.cm.imageUploadFormBox<br/>
+soa.cm.imageUploadFormBox
 ** TODO – ASK ARJUN **
 soa.cm.info
 * `info` is a box that can be dismissed that delivers feedback to the user regarding important information
@@ -392,7 +393,7 @@ soa.cm.info
     "classes" : "soa-ui-cm-example soa-ui-cm-example2"
 }) %>
 ```
-soa.cm.navItem<br/>
+soa.cm.navItem
 * `navItem` is a part of an entire navigation bar and needs to be placed inside
 * Implementation
 ```javascript
@@ -401,11 +402,11 @@ soa.cm.navItem<br/>
 "url": "#!forum"
 }) %>
 ```
-soa.cm.informationBox<br/>
+soa.cm.informationBox
 ** TODO – ASK ARJUN **
-soa.cm.licenseListItem<br/>
+soa.cm.licenseListItem
 ** TODO – ASK ARJUN **
-soa.cm.newsAlert<br/>
+soa.cm.newsAlert
 * `newsAlert` is a box that appears in the content area of the screen to inform the user of static errors or information
 * Implementation
 ```javascript
@@ -416,7 +417,7 @@ soa.cm.newsAlert<br/>
     "classes" : "soa-ui-cm-example soa-ui-cm-example2"
 })%>
 ```
-soa.cm.newsError<br/>
+soa.cm.newsError
 * `newsError` is a box that appears in the content area of the screen to inform the user of any errors
 * Implementation
 ```javascript
@@ -426,7 +427,7 @@ soa.cm.newsError<br/>
     "classes" : "soa-ui-cm-example soa-ui-cm-example2"
 })%>
 ```
-soa.cm.newsInfo<br/>
+soa.cm.newsInfo
 * `newsInfo` is a box that appears in the content area of the screen to inform the user of any important information
 * Implementation
 ```javascript
@@ -436,9 +437,9 @@ soa.cm.newsInfo<br/>
     "classes" : "soa-ui-cm-example soa-ui-cm-example2"
 })%>
 ```
-soa.cm.newsSuccess<br/>
+soa.cm.newsSuccess
 * `newsSuccess` is a box that appears in the content area of the screen to inform the user of a transaction success
-* Implementation<br/>
+* Implementation
 ```javascript
 <%== soa.cm.newsSuccess({
 "text": "Hello world",
@@ -446,7 +447,7 @@ soa.cm.newsSuccess<br/>
     "classes" : "soa-ui-cm-example soa-ui-cm-example2"
 })%>
 ```
-soa.cm.newsWarning<br/>
+soa.cm.newsWarning
 * `newsWarning` is a box that appears in the content area of the screen to inform the user of any warning information
 * Implementation
 ```javascript
@@ -456,7 +457,7 @@ soa.cm.newsWarning<br/>
     "classes" : "soa-ui-cm-example soa-ui-cm-example2"
 })%>
 ```
-soa.cm.numberTextBoxFormRow<br/>
+soa.cm.numberTextBoxFormRow
 * `numberTextBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a toolitp.  It is enclosed in a paragraph.  The field is required to be a number.
 * Implementation
 ```javascript
@@ -467,7 +468,7 @@ soa.cm.numberTextBoxFormRow<br/>
     "value" : "10"
 }) %>
 ```
-soa.cm.pageButton<br/>
+soa.cm.pageButton
 * `pageButton` is a button that appears in the header area of the screen
 * Implementation
 ```javascript
@@ -475,7 +476,7 @@ soa.cm.pageButton<br/>
 "name": "Export"
 }) %>
 ```
-soa.cm.pageTitle<br/>
+soa.cm.pageTitle
 * `pageTitle` is the title of the page
 * Implementation
 ```javascript
@@ -483,7 +484,7 @@ soa.cm.pageTitle<br/>
 "title": "My Apps"
 }) %>
 ```
-soa.cm.passwordFormRow<br/>
+soa.cm.passwordFormRow
 * `passwordFormRow` is a set of HTML objects that can contain a password input element, helper text, and a tooltip. It is enclosed in a paragraph.
 * Implementation
 ```javascript
@@ -493,7 +494,7 @@ soa.cm.passwordFormRow<br/>
     "placeholder" : "Enter your password"
 }) %>
 ```
-soa.cm.plainLinkButton<br/>
+soa.cm.plainLinkButton
 * `plainLinkButton` is a button that looks like a text link
 * Implementation
 ```javascript
@@ -501,7 +502,7 @@ soa.cm.plainLinkButton<br/>
 "name": "Login"
 }) %>
 ```
-soa.cm.radioButtonsFormRow<br/>
+soa.cm.radioButtonsFormRow
 * `radioButtonsFormRow` is a set of HTML objects that can contain at least one radio button input element, helper text, and a tooltip. They are enclosed in a UL element, enclosed by a DIV.
 * Implementation
 ```javascript
@@ -531,7 +532,7 @@ soa.cm.radioButtonsFormRow<br/>
     ]
 })%>
 ```
-soa.cm.rating<br/>
+soa.cm.rating
 * `rating` A small HTML element that displays a rating of 1-5 stars
 * Implementation
 ```javascript
@@ -539,14 +540,14 @@ soa.cm.rating<br/>
 "rating" : 4
 }) %>
 ```
-soa.cm.removeButton<br/>
+soa.cm.removeButton
 ** TODO – ASK ARJUN **
-soa.cm.removeItemButton<br/>
+soa.cm.removeItemButton
 ** TODO – ASK ARJUN **
 
-soa.cm.removePageButton<br/>
+soa.cm.removePageButton
 ** TODO – ASK ARJUN **
-soa.cm.requiredCheckboxCollectionFormRow<br/>
+soa.cm.requiredCheckboxCollectionFormRow
 * `requiredCheckboxCollectionFormRow` is a set of HTML objects that can contain at least one checbkox input element, helper text, and a tooltip. They are enclosed in a UL element, enclosed by a DIV.
 * Implementation
 ```javascript
@@ -567,7 +568,7 @@ soa.cm.requiredCheckboxCollectionFormRow<br/>
     ]
 })%>
 ```
-soa.cm.requiredCheckBoxFormRow<br/>
+soa.cm.requiredCheckBoxFormRow
 * `requiredCheckBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph. The user is required to check this box for the form to validate.
 * Implementation
 ```javascript
@@ -577,7 +578,7 @@ soa.cm.requiredCheckBoxFormRow<br/>
     "value" : "YES"
 }) %>
 ```
-soa.cm.requiredEmailTextBoxFormRow<br/>
+soa.cm.requiredEmailTextBoxFormRow
 * `requiredEmailTextBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph. The field is required to be an email address and must be filled out.
 * Implementation
 ```javascript
@@ -588,7 +589,7 @@ soa.cm.requiredEmailTextBoxFormRow<br/>
     "value" : "email@email.com"
 }) %>
 ```
-soa.cm.requiredFileUploadFormRow<br/>
+soa.cm.requiredFileUploadFormRow
 * `requiredFileUploadFormRow` is a set of HTML objects that can contain a file upload element, helper text, and a tooltip. It is enclosed in a paragraph.
 * Implementation
 ```javascript
@@ -598,7 +599,7 @@ soa.cm.requiredFileUploadFormRow<br/>
     "helperText": "Select an avatar to upload from your hard drive"
 }) %>
 ```
-soa.cm.requiredNumberTextBoxFormRow<br/>
+soa.cm.requiredNumberTextBoxFormRow
 * `requiredNumberTextBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph. The field is required to be an email address and must be filled out.
 * Implementation
 ```javascript
@@ -609,7 +610,7 @@ soa.cm.requiredNumberTextBoxFormRow<br/>
     "value" : "10"
 }) %>
 ```
-soa.cm.requiredPasswordFormRow<br/>
+soa.cm.requiredPasswordFormRow
 * `requiredPasswordFormRow` is a set of HTML objects that can contain a password input element, helper text, and a tooltip. It is enclosed in a paragraph. This field is required to be filled out
 * Implementation
 ```javascript
@@ -619,7 +620,7 @@ soa.cm.requiredPasswordFormRow<br/>
     "placeholder" : "Enter your password"
 }) %>
 ```
-soa.cm.requiredSelectBoxFormRow<br/>
+soa.cm.requiredSelectBoxFormRow
 * `requiredSelectBoxFormRow` is a set of HTML objects that can contain a select element, helper text, and a tooltip. It is enclosed in a paragraph. The user is required to select an option from this box for the form to validate.
 * Implementation
 ```javascript
@@ -639,7 +640,7 @@ soa.cm.requiredSelectBoxFormRow<br/>
     ]
 }) %>
 ```
-soa.cm.requiredTextAreaFormRow<br/>
+soa.cm.requiredTextAreaFormRow
 * `requiredTextAreaFormRow` is a set of HTML objects that can contain a textarea element, helper text, and a tooltip. It is enclosed in a paragraph. This textarea is required to be filled out.
 * Implementation
 ```javascript
@@ -649,7 +650,7 @@ soa.cm.requiredTextAreaFormRow<br/>
     "placeholder" : "Enter a description for your app"
 }) %>
 ```
-soa.cm.requiredTextBoxFormRow<br/>
+soa.cm.requiredTextBoxFormRow
 * `requiredTextBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph. The field is required to be filled out.
 * Implementation
 ```javascript
@@ -662,7 +663,7 @@ soa.cm.requiredTextBoxFormRow<br/>
     "tooltipText" : "Any text will be accepted as an application ID"
 }) %>
 ```
-soa.cm.requiredUrlTextBoxFormRow<br/>
+soa.cm.requiredUrlTextBoxFormRow
 * `requiredUrlTextBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph. The field is required to be a URL and must be filled out.
 * Implementation
 ```javascript
@@ -674,7 +675,7 @@ soa.cm.requiredUrlTextBoxFormRow<br/>
     "value" : "http://app.website.com"
 }) %>
 ```
-soa.cm.secondaryFormButton<br/>
+soa.cm.secondaryFormButton
 * `secondaryFormButton` is a button that appears at the bottom of a form in the secondary color
 * Implementation
 ```javascript
@@ -682,9 +683,9 @@ soa.cm.secondaryFormButton<br/>
 "name": "Cancel"
 }) %>
 ```
-soa.cm.secondaryItemButton<br/>
+soa.cm.secondaryItemButton
 ** TODO – ASK ARJUN **
-soa.cm.secondaryPageButton<br/>
+soa.cm.secondaryPageButton
 * `secondaryPageButton` is a button that appears in the header area of the screen in the secondary color
 * Implementation
 ```javascript
@@ -692,7 +693,7 @@ soa.cm.secondaryPageButton<br/>
 "name": "Import"
 }) %>
 ```
-soa.cm.selectBoxFormRow<br/>
+soa.cm.selectBoxFormRow
 * `selectBoxFormRow` is a set of HTML objects that can contain an HTML select element, helper text, and a tooltip. It is enclosed in a paragraph.
 * Implementation
 ```javascript
@@ -712,7 +713,7 @@ soa.cm.selectBoxFormRow<br/>
     ]
 }); %>
 ```
-soa.cm.status<br/>
+soa.cm.status
 * `status` A small HTML element that displays a well-formatted and color-coded status
 * Implementation
 ```javascript
@@ -720,7 +721,7 @@ soa.cm.status<br/>
     "status" : "public"
 }) %>
 ```
-soa.cm.subNavItem<br/>
+soa.cm.subNavItem
 * `subNavItem` is a part of an entire navigation bar and needs to be placed inside
 * Implementation
 ```javascript
@@ -729,7 +730,7 @@ soa.cm.subNavItem<br/>
 "url": "#!abc"
 }) %>
 ```
-soa.cm.success<br/>
+soa.cm.success
 * `success` is a box that can be dismissed that delivers feedback to the user regarding a successful transaction
 * Implementation
 ```javascript
@@ -740,7 +741,7 @@ soa.cm.success<br/>
     "classes" : "soa-ui-cm-example soa-ui-cm-example2"
 }) %>
 ```
-soa.cm.textAreaFormRow<br/>
+soa.cm.textAreaFormRow
 * `textAreaFormRow` is a set of HTML objects that can contain a textarea element, helper text, and a tooltip. It is enclosed in a paragraph.
 * Implementation
 ```javascript
@@ -750,7 +751,7 @@ soa.cm.textAreaFormRow<br/>
     "placeholder" : "Enter a description for your app"
 }) %>
 ```
-soa.cm.textBoxFormRow<br/>
+soa.cm.textBoxFormRow
 * `textBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph
 * Implementation
 ```javascript
@@ -763,7 +764,7 @@ soa.cm.textBoxFormRow<br/>
     "tooltipText" : "Any text will be accepted as an application ID"
 }) %>
 ```
-soa.cm.urlTextBoxFormRow<br/>
+soa.cm.urlTextBoxFormRow
 * `urlTextBoxFormRow` is a set of HTML objects that can contain a text input element, helper text, and a tooltip. It is enclosed in a paragraph. The field is required to be a URL.
 * Implementation
 ```javascript
@@ -775,7 +776,7 @@ soa.cm.urlTextBoxFormRow<br/>
     "value" : "http://app.website.com"
 }) %>
 ```
-soa.cm.warning<br/>
+soa.cm.warning
 * `warning` is a box that can be dismissed that delivers feedback to the user regarding warning information
 * Implementation
 ```javascript
