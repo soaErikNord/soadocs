@@ -6,7 +6,7 @@
 
 ####Background, technologies
 Custom less<br/>
-*[http://lesscss.org](https://www.less.org)
+* [http://lesscss.org](https://www.less.org)
 
 ####Customize custom.less
 
