@@ -6,7 +6,7 @@
 
 ####Background, technologies
 Custom less<br/>
-*[http://lesscss.org](https://www.less.org)
+* [http://lesscss.org](https://www.less.org)
 
 ####Customize custom.less
 
@@ -78,9 +78,9 @@ Custom less<br/>
 
 ####Background, technologies
 CanJS<br/>
-*[http://canjs.com](http://canjs.com)
+* [http://canjs.com](http://canjs.com)
 JQuery<br/>
-*[http://jquery.com](http://jquery.com)
+* [http://jquery.com](http://jquery.com)
 
 ####Creating new views
 To add new view, the following process should be followed:
@@ -91,8 +91,9 @@ To add new view, the following process should be followed:
 ####Modify existing views
 Any view that is currently in SimpleDev can be overridden.  Here is a list of all existing views:
 
-| --- | --- | --- |
-| active_discussions | api_status | app_details |
+Widgets | Widgets | Widgets
+--- | --- | ---
+active_discussions | api_status | app_details
 app_form | app_license_monitor | app_list
 app_monitor_metrics | app_monitor_usage_by_api | app_oauth_form
 app_overview | app_page | app_performance_chart
