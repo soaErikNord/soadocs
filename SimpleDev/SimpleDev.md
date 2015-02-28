@@ -5,7 +5,7 @@
 ###Branding
 
 ####Background, technologies
-Custom less
+Custom less<br/>
 *[http://lesscss.org](https://www.less.org)
 
 ####Customize custom.less
@@ -77,9 +77,9 @@ Custom less
 ###Resource
 
 ####Background, technologies
-CanJS
+CanJS<br/>
 *[http://canjs.com](http://canjs.com)
-JQuery
+JQuery<br/>
 *[http://jquery.com](http://jquery.com)
 
 ####Creating new views
@@ -91,8 +91,8 @@ To add new view, the following process should be followed:
 ####Modify existing views
 Any view that is currently in SimpleDev can be overridden.  Here is a list of all existing views:
 
---- | --- | --- 
-active_discussions | api_status | app_details
+| --- | --- | --- |
+| active_discussions | api_status | app_details |
 app_form | app_license_monitor | app_list
 app_monitor_metrics | app_monitor_usage_by_api | app_oauth_form
 app_overview | app_page | app_performance_chart
@@ -172,7 +172,7 @@ The ejs file becomes the new view of the footer.  An example of a new footer vie
     </div>
 </div>
 ```
-Upload the new footer to the environment and test:
+Upload the new footer to the environment and test:<br/>
  ![Acme Footer](../images/acmefooter.png)  
 
 #####Header
