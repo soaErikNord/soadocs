@@ -6,7 +6,7 @@
 
 ####Background, technologies
 Custom less
-*[http://lesscss.org](https://www.google.com)
+*[http://lesscss.org](https://www.less.org)
 
 ####Customize custom.less
 
