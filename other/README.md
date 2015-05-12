@@ -125,6 +125,7 @@ shortcut=
 ###Environment Property File
 A single environment property file is required for a given server build out.  These are properties that will be shared across all containers that exist on a given server.  Currently, support building database properties for MySQL and MSSQL.
 
+```
 [InstallSection]
 install.path=/opt/soa_sw/
 
@@ -177,12 +178,14 @@ proxy.url=
 proxy=
 proxy.user=
 proxy.password=
+```
 
 ###Container Property Files
 A uniquely named container file should be provided for every container that needs to be built and configured for a specific environment.  So, if a PM and ND nodes are needed an a single host, it would be required for 2 uniquely named container property files.
 
 For a secured container, include the secured flag as true.  If custom certificates are needed, provide 2 different custom keystores.  The first keystore would be used for the container that is being built.  The trusted keystore will be used to add a certificate to the cacert file for any containers that this container needs to interact with.  At the same time, the 'com.soa.security' category will be appropriately updated and the crl flag will be set to false in the 'com.soa.crl' category.
 
+```
  [CommonProperties]
 container.name=pm
 container.host=0.0.0.0
@@ -302,6 +305,6 @@ performance.framework.makeFreshInterval=900
 performance.endpoint.allowRemoval=false
 performance.endpoint.expirationInterval=3600000
 performance.endpoint.maxrefreshInterval=900000
-
+```
 
 
