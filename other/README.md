@@ -107,7 +107,7 @@ Install the proper features
 
 ###Installer Property File
 
-'''
+```
  [InstallSection]
 ; install.path and resources.location must be absolute
 install.path=/opt/soa_sw/
@@ -120,7 +120,7 @@ temp.directory=/tmp
 key=
 ; For windows installs, this creates the short cut
 shortcut=
-'''
+```
 
 ###Environment Property File
 A single environment property file is required for a given server build out.  These are properties that will be shared across all containers that exist on a given server.  Currently, support building database properties for MySQL and MSSQL.
