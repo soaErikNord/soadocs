@@ -9,13 +9,13 @@ To run installer
 * vi(or favorite editor) properties/installer.properties
 * Update as needed
   * resources
-** key (license)
+  * key (license)
 * add appropriate environment and container property files to properties directory
 * run ./installer.py -i -s -c -v > createContainers.log
-** -i install
-** -s deploy scripts
-** -c create containers
-** -v verbose
+  * -i install
+  * -s deploy scripts
+  * -c create containers
+  * -v verbose
 
 ###Main
 
@@ -31,75 +31,75 @@ To run container as standalone
 * export JAVA_HOME=<install dir>/sm70/jre
 * export JYTHON_HOME=<install dir>/sm70/scripts
 * run ../bin/jython.sh containerManager.py -c -v > createContainers.log
-** -c create containers
-** -u update containers
-** -v verbose
+  * -c create containers
+  * -u update containers
+  * -v verbose
 
 ###Create Container
 
 ####Container Features
 Install the proper features
 * Standalone PM
-** -policy.manager.console
-** -policy.manager.services
-** -security.services
+  * -policy.manager.console
+  * -policy.manager.services
+  * -security.services
 
 * PM with CM
-** -Install Standalone PM
-** -community.manager
-** -community.manager.default.theme
-** -community.manager.openid.provider
-** -community.manager.scheduled.jobs
-** -community.manager.simple.developer.theme (If using SimpleDev)
+  * -Install Standalone PM
+  * -community.manager
+  * -community.manager.default.theme
+  * -community.manager.openid.provider
+  * -community.manager.scheduled.jobs
+  * -community.manager.simple.developer.theme (If using SimpleDev)
 
 * PM with CM and OAuth
-** -Install PM with CM
-** -community.manager.oauth.provider
-** -oauth.provider
+  * -Install PM with CM
+  * -community.manager.oauth.provider
+  * -oauth.provider
 
 * PM with remote CM
-** -Install Standalone PM
-** -community.manager.scheduled.jobs
-** -community.manager.plugin
-** -community.manager.policy.console
+  * -Install Standalone PM
+  * -community.manager.scheduled.jobs
+  * -community.manager.plugin
+  * -community.manager.policy.console
 
 * Standalone CM
-** -community.manager.apis
-** -community.manager.default.theme
-** -community.manager.openid.provider
-** -community.manager.simple.developer.theme (If using SimpleDev)
+  * -community.manager.apis
+  * -community.manager.default.theme
+  * -community.manager.openid.provider
+  * -community.manager.simple.developer.theme (If using SimpleDev)
 
 * Standalone CM with OAuth
-** -Install Standalone CM
-** -community.manager.oauth.provider
-** -oauth.provider
+  * -Install Standalone CM
+  * -community.manager.oauth.provider
+  * -oauth.provider
 
 * Standalone ND
-** -network.director
-** -api.security.policy.handler
+  * -network.director
+  * -api.security.policy.handler
 
 * Standalone ND with OAuth
-** -Install Standalone ND
-** -community.manager.oauth.provider.agent
-** -oauth.provider.agent
+  * -Install Standalone ND
+  * -community.manager.oauth.provider.agent
+  * -oauth.provider.agent
 
 * Standalone OAuth
-** -community.manager.oauth.provider
-** -oauth.provider
-** -community.manager.plugin
+  * -community.manager.oauth.provider
+  * -oauth.provider
+  * -community.manager.plugin
 
 * Ping Support
-** -For CM
-*** -ping.federate.integration
-** -For ND
-*** -ping.support
+  * -For CM
+   * -ping.federate.integration
+  * -For ND
+   * -ping.support
 
 * LaaS Support
-** -For CM nodes only
-*** -community.manager.laas
+  * -For CM nodes only
+   * -community.manager.laas
 	
 * Add Monitoring to any container
-** -admin.monitoring.tool
+  * -admin.monitoring.tool
 
 ###Update Features
 		
