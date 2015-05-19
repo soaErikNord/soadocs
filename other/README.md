@@ -90,13 +90,13 @@ Install the proper features
 
 * Ping Support
   * -For CM
-   * -ping.federate.integration
+    * -ping.federate.integration
   * -For ND
-   * -ping.support
+    * -ping.support
 
 * LaaS Support
   * -For CM nodes only
-   * -community.manager.laas
+    * -community.manager.laas
 	
 * Add Monitoring to any container
   * -admin.monitoring.tool
