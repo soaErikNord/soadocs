@@ -48,7 +48,7 @@ Post tasks consist of specific tasks that performed on a container after the con
 ![Post Tasks](postTasks.png)
 
 #### Hardening Tasks
-These tasks are the implementation of the ![Hardening 2.0](http://docs.akana.com/sp/platform-hardening_2.0.html) recommendations.
+These tasks are the implementation of the [Hardening 2.0](http://docs.akana.com/sp/platform-hardening_2.0.html) recommendations.
 ![Hardening Tasks](hardeningTasks.png)
 
 #### Performance Tasks
