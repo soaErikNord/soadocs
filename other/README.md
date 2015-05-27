@@ -1,6 +1,6 @@
-#Akana Automated Software Deployment
+# Akana Automated Software Deployment
 
-##Installer Script
+## Installer Script
 To run installer
 * Download and copy the appropriate files to server (/tmp/install)
 * cd <extracted location>/install
@@ -8,22 +8,25 @@ To run installer
 * chmod +x installer.py
 * vi(or favorite editor) properties/installer.properties
 * Update as needed
-  * resources
-  * key (license)
+** resources
+** key (license)
 * add appropriate environment and container property files to properties directory
 * run ./installer.py -i -s -c -v > createContainers.log
-  * -i install
-  * -s deploy scripts
-  * -c create containers
-  * -v verbose
+** -i install
+** -s deploy scripts
+** -c create containers
+** -v verbose
 
-###Main
+### Main
+![Installer](installer.png)
 
-###Install Base
+### Install Base
+![Install Base Product](base.png)
 
-###Install Scripts
+### Install Scripts
+![Deploy create scripts](scripts.png)
 
-##Container Script
+## Container Script
 To run container as standalone
 * cd <install dir>/sm70/scripts/properties
 * Update all property files correctly.  Delete the ones you don't want to create
@@ -31,83 +34,97 @@ To run container as standalone
 * export JAVA_HOME=<install dir>/sm70/jre
 * export JYTHON_HOME=<install dir>/sm70/scripts
 * run ../bin/jython.sh containerManager.py -c -v > createContainers.log
-  * -c create containers
-  * -u update containers
-  * -v verbose
+** -c create containers
+** -u update containers
+** -v verbose
 
-###Create Container
+### Create Container
+![Create Container](createContainer.png)
 
-####Container Features
+#### Build Database
+
+#### Post Tasks
+Post tasks consist of specific tasks that performed on a container after the container has been started.  These are tasks that are specific to either an ND or CM container.
+![Post Tasks](postTasks.png)
+
+#### Hardening Tasks
+These tasks are the implementation of the ![Hardening 2.0](http://docs.akana.com/sp/platform-hardening_2.0.html) recommendations.
+![Hardening Tasks](hardeningTasks.png)
+
+#### Performance Tasks
+These tasks are the implementation of the ![Performance](http://docs.akana.com/sp/performance-tuning.html) recommendations.
+![Performance Tasks](performanceTasks.png)
+
+#### Container Features
 Install the proper features
 * Standalone PM
-  * -policy.manager.console
-  * -policy.manager.services
-  * -security.services
+** -policy.manager.console
+** -policy.manager.services
+** -security.services
 
 * PM with CM
-  * -Install Standalone PM
-  * -community.manager
-  * -community.manager.default.theme
-  * -community.manager.openid.provider
-  * -community.manager.scheduled.jobs
-  * -community.manager.simple.developer.theme (If using SimpleDev)
+** -Install Standalone PM
+** -community.manager
+** -community.manager.default.theme
+** -community.manager.openid.provider
+** -community.manager.scheduled.jobs
+** -community.manager.simple.developer.theme (If using SimpleDev)
 
 * PM with CM and OAuth
-  * -Install PM with CM
-  * -community.manager.oauth.provider
-  * -oauth.provider
+** -Install PM with CM
+** -community.manager.oauth.provider
+** -oauth.provider
 
 * PM with remote CM
-  * -Install Standalone PM
-  * -community.manager.scheduled.jobs
-  * -community.manager.plugin
-  * -community.manager.policy.console
+** -Install Standalone PM
+** -community.manager.scheduled.jobs
+** -community.manager.plugin
+** -community.manager.policy.console
 
 * Standalone CM
-  * -community.manager.apis
-  * -community.manager.default.theme
-  * -community.manager.openid.provider
-  * -community.manager.simple.developer.theme (If using SimpleDev)
+** -community.manager.apis
+** -community.manager.default.theme
+** -community.manager.openid.provider
+** -community.manager.simple.developer.theme (If using SimpleDev)
 
 * Standalone CM with OAuth
-  * -Install Standalone CM
-  * -community.manager.oauth.provider
-  * -oauth.provider
+** -Install Standalone CM
+** -community.manager.oauth.provider
+** -oauth.provider
 
 * Standalone ND
-  * -network.director
-  * -api.security.policy.handler
+** -network.director
+** -api.security.policy.handler
 
 * Standalone ND with OAuth
-  * -Install Standalone ND
-  * -community.manager.oauth.provider.agent
-  * -oauth.provider.agent
+** -Install Standalone ND
+** -community.manager.oauth.provider.agent
+** -oauth.provider.agent
 
 * Standalone OAuth
-  * -community.manager.oauth.provider
-  * -oauth.provider
-  * -community.manager.plugin
+** -community.manager.oauth.provider
+** -oauth.provider
+** -community.manager.plugin
 
 * Ping Support
-  * -For CM
-    * -ping.federate.integration
-  * -For ND
-    * -ping.support
+** -For CM
+*** -ping.federate.integration
+** -For ND
+*** -ping.support
 
 * LaaS Support
-  * -For CM nodes only
-    * -community.manager.laas
-	
+** -For CM nodes only
+*** -community.manager.laas
+    
 * Add Monitoring to any container
-  * -admin.monitoring.tool
+** -admin.monitoring.tool
 
-###Update Features
-		
-##Property Files
+### Update Features
+        
+## Property Files
 
-###Installer Property File
+### Installer Property File
 
-```
  [InstallSection]
 ; install.path and resources.location must be absolute
 install.path=/opt/soa_sw/
@@ -120,11 +137,9 @@ temp.directory=/tmp
 key=
 ; For windows installs, this creates the short cut
 shortcut=
-```
 
-###Environment Property File
+h3. Environment Property File
 A single environment property file is required for a given server build out.  These are properties that will be shared across all containers that exist on a given server.  Currently, support building database properties for MySQL and MSSQL.
-
 ```
 [InstallSection]
 install.path=/opt/soa_sw/
@@ -134,8 +149,8 @@ database.create=true
 database.pm=true
 database.cm=false
 database.oauth=false
-;  	Specify the configuration values for this database
-;    	key       |restrict | description         
+;   Specify the configuration values for this database
+;       key       |restrict | description         
 ;   -------------+---------+--------------------------------------------------
 ;   databaseType |         | 'mssql', 'mysql', 'oracle', 'oracle-sn', 'db2'
 ;   user         |         | Database connect userid
@@ -180,13 +195,13 @@ proxy.user=
 proxy.password=
 ```
 
-###Container Property Files
+### Container Property Files
 A uniquely named container file should be provided for every container that needs to be built and configured for a specific environment.  So, if a PM and ND nodes are needed an a single host, it would be required for 2 uniquely named container property files.
 
 For a secured container, include the secured flag as true.  If custom certificates are needed, provide 2 different custom keystores.  The first keystore would be used for the container that is being built.  The trusted keystore will be used to add a certificate to the cacert file for any containers that this container needs to interact with.  At the same time, the 'com.soa.security' category will be appropriately updated and the crl flag will be set to false in the 'com.soa.crl' category.
 
 ```
- [CommonProperties]
+[CommonProperties]
 container.name=pm
 container.host=0.0.0.0
 container.port=9900
@@ -245,7 +260,7 @@ proxy.filename=
 ; used to route containers through load balancer when needed
 ; Format needs to be the following '<routes><route><filename>com.soa.http.route-pm1.cfg</filename><pattern>http://pm.host.com:9900/*</pattern><url>http://lb.host.com</url></route></routes>'
 ; Needed when routing requests back through a load balance: https://support.soa.com/support/index.php?_m=knowledgebase&_a=viewarticle&kbarticleid=607
-route.definitions=<routes><route><filename>com.soa.http.route-pm1.cfg</filename><pattern>http://pm.host.com:9900/*</pattern><url>http://lb.host.com</url></route></routes>
+route.definitions=
 
 ; ND specific properties
 ; just the address to pm like http://<hostname>:<port>
@@ -257,6 +272,8 @@ cluster=
 https.private.key=
 https.private.key.cert.chain=
 https.trusted.cert.chain=
+; disable the remote usage writer in ND containers
+remote.writer.enabled=false
 
 [TenantProperties]
 ; CM specific properties
@@ -267,11 +284,13 @@ tenant.id=enterpriseapi
 tenant.address=http://localhost:9900 
 tenant.console.address=http://localhost:9900/enterpriseapi 
 tenant.theme=default 
-tenant.admin.email=administrator@localhost.localdomain 
+tenant.admin.email=admin@open 
 tenant.admin.password=password 
-tenant.contact.email.address=no-reply@localhost.localdomain 
-tenant.from.email.address=no-reply@localhost.localdomain
+tenant.contact.email.address=no-reply@open 
+tenant.from.email.address=no-reply@open
 tenant.virtual.hosts=
+;Added 7.2.8
+tenant.create=false
 
 [HardeningProperties]
 ; Hardening properties are set to recommended values.  Change if desired.  For details review: http://docs.akana.com/sp/platform-hardening.html
@@ -285,6 +304,17 @@ harden.cache.refreshTime=300000
 harden.nd.interceptor.blocked=content-type,content-length,content-range,content-md5,host,expect,keep-alive,connection,transfer-encoding,atmo-forward-to,atmo-forwarded-from
 ; only configured on CM Containers
 harden.cm.interceptor.blocked=content-type,content-length,content-range,content-md5,host,expect,keep-alive,connection,transfer-encoding
+;Added 7.2.8 (Hardening 2.0)
+harden.enabledProtocols=SSLv2HELLO,TLSv1,TLSv1.1, TLSv1.2
+harden.nd.replace.host={host}
+harden.nd.security.expiration.period=3600000
+harden.nd.security.refresh.time=300000
+harden.cm.allowed.hosts==<Network Director Host(s) and/or Load Balancer host>
+harden.cm.csrf.enabled=true
+harden.cm.exception.urls=[COMMA DELIMITED LIST]
+harden.cm.keywords=[COMMA DELIMITED LIST]
+harden.cm.validate=[true|false]
+harden.cm.x.frame=[DESIRED HEADER]
 
 [PerformanceProperties]
 ; Performance properties need to be set appropriately for your desired results.  Values currently set are for examples only.
@@ -306,5 +336,18 @@ performance.endpoint.allowRemoval=false
 performance.endpoint.expirationInterval=3600000
 performance.endpoint.maxrefreshInterval=900000
 ```
+
+#### Example Container Files
+
+![Stand alone PM Container](http://docs.akana.com/sp/platform-hardening_2.0.html)
+
+![Stand alone CM/OAuth Container](http://docs.akana.com/sp/platform-hardening_2.0.html)
+
+![Stand alone ND Container](http://docs.akana.com/sp/platform-hardening_2.0.html)
+
+## Todo Tasks
+            
+
+
 
 
