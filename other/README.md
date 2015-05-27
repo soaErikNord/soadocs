@@ -8,7 +8,7 @@ To run installer
 * chmod +x installer.py
 * vi(or favorite editor) properties/installer.properties
 * Update as needed
-** resources
+ * resources
 ** key (license)
 * add appropriate environment and container property files to properties directory
 * run ./installer.py -i -s -c -v > createContainers.log
