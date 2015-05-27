@@ -52,7 +52,7 @@ These tasks are the implementation of the [Hardening 2.0](http://docs.akana.com/
 ![Hardening Tasks](hardeningTasks.png)
 
 #### Performance Tasks
-These tasks are the implementation of the ![Performance](http://docs.akana.com/sp/performance-tuning.html) recommendations.
+These tasks are the implementation of the [Performance](http://docs.akana.com/sp/performance-tuning.html) recommendations.
 ![Performance Tasks](performanceTasks.png)
 
 #### Container Features
@@ -108,7 +108,7 @@ Install the proper features
 
 * Ping Support
  * For CM
-  * ping.federate.integration
+ ** ping.federate.integration
  * For ND
   * ping.support
 
@@ -138,7 +138,7 @@ key=
 ; For windows installs, this creates the short cut
 shortcut=
 ```
-h3. Environment Property File
+### Environment Property File
 A single environment property file is required for a given server build out.  These are properties that will be shared across all containers that exist on a given server.  Currently, support building database properties for MySQL and MSSQL.
 ```
 [InstallSection]
@@ -339,11 +339,11 @@ performance.endpoint.maxrefreshInterval=900000
 
 #### Example Container Files
 
-![Stand alone PM Container](1_pmcontainer.properties)
+[Stand alone PM Container](1_pmcontainer.properties)
 
-![Stand alone CM/OAuth Container](2_cmcontainer.properties)
+[Stand alone CM/OAuth Container](2_cmcontainer.properties)
 
-![Stand alone ND Container](3_ndcontainer.properties)
+[Stand alone ND Container](3_ndcontainer.properties)
 
 ## Todo Tasks
             
