@@ -356,8 +356,16 @@ performance.endpoint.maxrefreshInterval=900000
 
 [Stand alone ND Container](3_ndcontainer.properties)
 
-## Todo Tasks
-            
+## Todo 
+### Tasks
+* Test
+    - Windows
+    - Oracle
+    - DB2
+    
+### Issues
+* Configurator still running
+
 
 
 
