@@ -42,6 +42,17 @@ To run container as standalone
 ![Create Container](createContainer.png)
 
 #### Build Database
+The _Create Container_ process can also build the Policy Manager database. This processing is controlled by the properties in the `[DatabaseSection]` part of the _Installer Property File_ shown below.
+The scripted database build process is divided into two parts just like the database processing in the Admin Console:
+1. **Database Create Task** is the equivalent of the "Create new database" option in Admin console. If the database already exists, it will be replaced with a new, empty database.
+2. **Schema Management Task** populates the database with the tables and data needed by the selected features.
+
+The database build process scans all of the OSGi bundles in the `sm70/lib` directory tree to locate the scripts and controls needed by these two tasks. It does not depend on anything in the `sm70/dbscripts` directory tree.
+ 
+The database build Jython scripts included in the Automated Deployment package are designed so they can be easily used in the future to provide additional automation such as:
+* Changing the database connect string or username and password
+* Applying database updates
+* Installing additional features in a container that include database scripts
 
 #### Post Tasks
 Post tasks consist of specific tasks that performed on a container after the container has been started.  These are tasks that are specific to either an ND or CM container.
@@ -108,7 +119,7 @@ Install the proper features
 
 * Ping Support
  * For CM
- ** ping.federate.integration
+  * ping.federate.integration
  * For ND
   * ping.support
 
