@@ -435,24 +435,24 @@ performance.endpoint.maxrefreshInterval=900000
 
     Include (at least) the following properties in the container properties file:
 
-        ```
+```
         [OptionPacks]
         ; include if siteminder is required
         sitemider=false
         siteminder.ui=false
         site.minder.path=<path to the site minder installation>
-        ```
+```
 - Added support for SAML WebSSO.
     The ability to dynamically install and configure the SAML WebSSO functionality.  The feature pack must be included in the installer, which can be downloaded from the Akana support site.
 
     Include (at least) the following properties in the container properties file that requires this feature:
     
-        ```
+```
         [OptionPacks]
         ; include is configuring SAML authentication
         saml2.sso=false
         saml2.sso.ui=false
-        ```
+```
 - Only container required fields are needed in a properties file.
     The automation now allows property fields to be omitted.  The following lists what is required based off of the container type:
     - All Containers
