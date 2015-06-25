@@ -471,7 +471,6 @@ performance.endpoint.maxrefreshInterval=900000
                 - harden.enabledProtocols
                 - harden.cache.expirationPeriod
                 - harden.cache.refreshTime
-                - 
         + Performance Section
             * container.performance
             * if container.performance is true all properties are required
