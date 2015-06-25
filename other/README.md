@@ -1,5 +1,16 @@
 # Akana Automated Software Deployment
 
+## Demo Recording
+
+https://my.soa.com/personal/enord/Documents/Shared%20with%20Everyone/AutomationDemo.mp4
+
+https://my.soa.com/personal/enord/Documents/Shared%20with%20Everyone/AutomationDemo.arf
+
+## SVN
+Distribution: http://svn.soa.local/ps/branches/components-7.xx/automation/com.soa.pso.automation.jython/dist/pso-automation_7.2.zip
+
+Source: http://svn.soa.local/ps/branches/components-7.xx/automation/com.soa.pso.automation.jython/
+
 ## Installer Script
 To run installer
 * Download and copy the appropriate files to server (/tmp/install)
@@ -130,6 +141,25 @@ Install the proper features
 * Add Monitoring to any container
  * admin.monitoring.tool
 
+* Optional Features
+ * Site Minder
+  * sitemider
+  * siteminder.ui
+ * SAML WebSSO
+  * saml2.sso
+  * saml2.sso.ui
+ * Development Services
+  * devservices
+ * Policy Manager for IBM WebSphere DataPower
+  * pm.custom.policy
+  * pm.websphere.mq
+  * pmdp
+  * pmdp.slave.node
+  * pmdp.console.policy
+  * pmdp.malicious.pattern
+  * pmdp.oauth
+  * pmdp.schema.update
+
 ### Update Features
         
 ## Property Files
@@ -156,10 +186,18 @@ A single environment property file is required for a given server build out.  Th
 install.path=/opt/soa_sw/
 
 [DatabaseSection]
-database.create=true
+database.create=false
+; if database create and the database already exist, what should we do
+database.recreate=false
+; Check the required schemas
 database.pm=true
-database.cm=false
-database.oauth=false
+database.cm=true
+database.oauth=true
+database.laas=false
+database.upgrade52=false
+database.pmdp=false
+database.wcf=false
+database.ims=false
 ;   Specify the configuration values for this database
 ;       key       |restrict | description         
 ;   -------------+---------+--------------------------------------------------
@@ -191,7 +229,7 @@ database.name=
 database.max.pool.size=30
 database.min.pool.size=3
 database.max.wait=30000
-database.jar=
+database.jar=<required database jar file>
 ; mssql/oracle specific, only populate for mssql or oracle
 database.instance.name=
 ; db2 specific, only populate for db2
@@ -265,6 +303,26 @@ ping.federate.integration=false
 72.upgrade=false
 admin.monitoring.tool=true
 
+[OptionPacks]
+; include if siteminder is required
+sitemider=false
+siteminder.ui=false
+site.minder.path=
+; include is configuring SAML authentication
+saml2.sso=false
+saml2.sso.ui=false
+; include for Development Services
+devservices=false
+; PMDP Features
+pm.custom.policy=false
+pm.websphere.mq=false
+pmdp=false
+pmdp.slave.node=false
+pmdp.console.policy=false
+pmdp.malicious.pattern=false
+pmdp.oauth=false
+pmdp.schema.update=false
+
 [ConfigurationFiles]
 database.configure=true
 proxy.filename=
@@ -280,15 +338,14 @@ wsmex.address=
 ; Change if ND is required to be under a different organization
 org=uddi:soa.com:registryorganization
 cluster=
-https.private.key=
-https.private.key.cert.chain=
-https.trusted.cert.chain=
 ; disable the remote usage writer in ND containers
-remote.writer.enabled=false
+remote.writer.enabled=true
 
 [TenantProperties]
 ; CM specific properties
 atmosphere.context.root=
+; users configured in community manager
+atmosphere.config.userRolesDenied=
 tenant.url=http://localhost:9900 
 tenant.name=EnterpriseAPI 
 tenant.id=enterpriseapi
@@ -313,8 +370,10 @@ harden.cache.expirationPeriod=3600000
 harden.cache.refreshTime=300000
 ; only configured on ND containers
 harden.nd.interceptor.blocked=content-type,content-length,content-range,content-md5,host,expect,keep-alive,connection,transfer-encoding,atmo-forward-to,atmo-forwarded-from
+harden.nd.template=replace=X-Forwarded-Host:{host}
 ; only configured on CM Containers
 harden.cm.interceptor.blocked=content-type,content-length,content-range,content-md5,host,expect,keep-alive,connection,transfer-encoding
+harden.cm.template=
 ;Added 7.2.8 (Hardening 2.0)
 harden.enabledProtocols=SSLv2HELLO,TLSv1,TLSv1.1, TLSv1.2
 harden.nd.replace.host={host}
@@ -336,6 +395,7 @@ performance.connection.defaultMaxPerRoute=1500
 performance.loadGifMetrics=false
 performance.performAutoSearch=true
 performance.requireMetricsPolicy=true
+performance.failureDataCaptureEnabled=true
 ; ND containers to controll the usage writer
 performance.queueCapacity=10000
 performance.usageBatchSize=50
@@ -356,17 +416,95 @@ performance.endpoint.maxrefreshInterval=900000
 
 [Stand alone ND Container](3_ndcontainer.properties)
 
+## Release Notes
+### 7.2_06252015
+- Added support for all database schemas.
+    The following schemas are now supported to me dynamically created from the automation framework.
+    - PM
+    - CM
+    - OAUTH
+    - LAAS
+    - Upgrade52
+    - PMDP
+    - WCF
+    - IMS
+- Added support for site minder.
+    The ability to dynamically install and configure the Site Minder functionality.  It is required to have the Site Minder Web Agent installed prior to running the automation.
+
+    When running the installer include the Site Minder features that can be downloaded from the Akana Support site.
+
+    Include (at least) the following properties in the container properties file:
+        '''
+        [OptionPacks]
+        ; include if siteminder is required
+        sitemider=false
+        siteminder.ui=false
+        site.minder.path=<path to the site minder installation>
+        '''
+- Added support for SAML WebSSO.
+    The ability to dynamically install and configure the SAML WebSSO functionality.  The feature pack must be included in the installer, which can be downloaded from the Akana support site.
+
+    Include (at least) the following properties in the container properties file that requires this feature:
+        '''
+        [OptionPacks]
+        ; include is configuring SAML authentication
+        saml2.sso=false
+        saml2.sso.ui=false
+        '''
+- Only container required fields are needed in a properties file.
+    The automation now allows property fields to be omitted.  The following lists what is required based off of the container type:
+    - All Containers
+        + Common Properties section
+        + Features section
+        + Plugin section
+        + Tool section
+        + Configuration Files section (specific properties depends on container type)
+            * database.configure
+            * proxy.filename
+            * route.definitions
+        + Hardening Section 
+            * container.harden
+            * if container.harden is true
+                - harden.ignoreCookies
+                - harden.secureCookies
+                - harden.cipherSuites
+                - harden.enabledProtocols
+                - harden.cache.expirationPeriod
+                - harden.cache.refreshTime
+                - 
+        + Performance Section
+            * container.performance
+            * if container.performance is true all properties are required
+    -CM Only
+        + Tenant Properties section
+        + Hardening Section
+            * if container.harden is true
+                - harden.cm.interceptor.blocked
+                - harden.cm.allowed.hosts
+                - harden.cm.csrf.enabled
+                - harden.cm.exception.urls
+                - harden.cm.keywords
+                - harden.cm.validate
+                - harden.cm.x.frame
+    -ND Only
+        + Configuration Files section
+            * wsmex.address
+            * org=uddi:soa.com:registryorganization
+            * cluster
+            * remote.writer.enabled
+        + Hardening Section
+            * if container.harden is true
+                - harden.nd.interceptor.blocked
+                - harden.nd.replace.host
+                - harden.nd.security.expiration.period
+                - harden.nd.security.refresh.time
+
 ## Todo 
 ### Tasks
 * Test
     - Windows
-    - Oracle
     - DB2
+* PMDP container creation
     
 ### Issues
 * Configurator still running
-
-
-
-
-
