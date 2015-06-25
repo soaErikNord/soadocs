@@ -249,6 +249,53 @@ A uniquely named container file should be provided for every container that need
 
 For a secured container, include the secured flag as true.  If custom certificates are needed, provide 2 different custom keystores.  The first keystore would be used for the container that is being built.  The trusted keystore will be used to add a certificate to the cacert file for any containers that this container needs to interact with.  At the same time, the `com.soa.security` category will be appropriately updated and the crl flag will be set to false in the `com.soa.crl` category.
 
+Only container required fields are needed in a properties file.
+    The automation now allows property fields to be omitted.  The following lists what is required based off of the container type:
+    - All Containers
+        + Common Properties section
+        + Features section
+        + Plugin section
+        + Tool section
+        + Configuration Files section (specific properties depends on container type)
+            * database.configure
+            * proxy.filename
+            * route.definitions
+        + Hardening Section 
+            * container.harden
+            * if container.harden is true
+                - harden.ignoreCookies
+                - harden.secureCookies
+                - harden.cipherSuites
+                - harden.enabledProtocols
+                - harden.cache.expirationPeriod
+                - harden.cache.refreshTime
+        + Performance Section
+            * container.performance
+            * if container.performance is true all properties are required
+    - CM Only
+        + Tenant Properties section
+        + Hardening Section
+            * if container.harden is true
+                - harden.cm.interceptor.blocked
+                - harden.cm.allowed.hosts
+                - harden.cm.csrf.enabled
+                - harden.cm.exception.urls
+                - harden.cm.keywords
+                - harden.cm.validate
+                - harden.cm.x.frame
+    - ND Only
+        + Configuration Files section
+            * wsmex.address
+            * org=uddi:soa.com:registryorganization
+            * cluster
+            * remote.writer.enabled
+        + Hardening Section
+            * if container.harden is true
+                - harden.nd.interceptor.blocked
+                - harden.nd.replace.host
+                - harden.nd.security.expiration.period
+                - harden.nd.security.refresh.time
+
 ```
 [CommonProperties]
 container.name=pm
@@ -446,7 +493,7 @@ performance.endpoint.maxrefreshInterval=900000
     The ability to dynamically install and configure the SAML WebSSO functionality.  The feature pack must be included in the installer, which can be downloaded from the Akana support site.
 
     Include (at least) the following properties in the container properties file that requires this feature:
-    
+
 ```
         [OptionPacks]
         ; include is configuring SAML authentication
