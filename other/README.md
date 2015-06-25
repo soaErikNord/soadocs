@@ -434,6 +434,7 @@ performance.endpoint.maxrefreshInterval=900000
     When running the installer include the Site Minder features that can be downloaded from the Akana Support site.
 
     Include (at least) the following properties in the container properties file:
+
         ```
         [OptionPacks]
         ; include if siteminder is required
@@ -445,6 +446,7 @@ performance.endpoint.maxrefreshInterval=900000
     The ability to dynamically install and configure the SAML WebSSO functionality.  The feature pack must be included in the installer, which can be downloaded from the Akana support site.
 
     Include (at least) the following properties in the container properties file that requires this feature:
+    
         ```
         [OptionPacks]
         ; include is configuring SAML authentication
