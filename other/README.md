@@ -141,24 +141,24 @@ Install the proper features
 * Add Monitoring to any container
  * admin.monitoring.tool
 
-* Optional Features
- * Site Minder
-  * sitemider
-  * siteminder.ui
- * SAML WebSSO
-  * saml2.sso
-  * saml2.sso.ui
- * Development Services
-  * devservices
- * Policy Manager for IBM WebSphere DataPower
-  * pm.custom.policy
-  * pm.websphere.mq
-  * pmdp
-  * pmdp.slave.node
-  * pmdp.console.policy
-  * pmdp.malicious.pattern
-  * pmdp.oauth
-  * pmdp.schema.update
++ Optional Features
+    * Site Minder
+        - sitemider
+        - sitemider
+    * SAML WebSSO
+        - saml2.sso
+        - saml2.sso.ui
+    * Development Services
+        - devservices
+    * Policy Manager for IBM WebSphere DataPower
+        - pm.custom.policy
+        - pm.websphere.mq
+        - pmdp
+        - pmdp.slave.node
+        - pmdp.console.policy
+        - pmdp.malicious.pattern
+        - pmdp.oauth
+        - pmdp.schema.update
 
 ### Update Features
         
