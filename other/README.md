@@ -476,7 +476,7 @@ performance.endpoint.maxrefreshInterval=900000
         + Performance Section
             * container.performance
             * if container.performance is true all properties are required
-    -CM Only
+    - CM Only
         + Tenant Properties section
         + Hardening Section
             * if container.harden is true
@@ -487,7 +487,7 @@ performance.endpoint.maxrefreshInterval=900000
                 - harden.cm.keywords
                 - harden.cm.validate
                 - harden.cm.x.frame
-    -ND Only
+    - ND Only
         + Configuration Files section
             * wsmex.address
             * org=uddi:soa.com:registryorganization
