@@ -128,15 +128,13 @@ Install the proper features
  * oauth.provider
  * community.manager.plugin
 
-* Ping Support
- * For CM
-  * ping.federate.integration
- * For ND
-  * ping.support
++ PingFederate Support
+    * For CM and ND
+        - ping.federate.integration
 
-* LaaS Support
- * For CM nodes only
-  * community.manager.laas
++ LaaS Support
+    * For CM nodes only
+        - community.manager.laas
     
 * Add Monitoring to any container
  * admin.monitoring.tool
