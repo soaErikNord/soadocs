@@ -24,7 +24,9 @@ Follow these steps to properly import the services into a valid PM and ND enviro
 * Go to the following directory, US Bank --> CPS --> Contracts --> Provided Contracts, and select the 'CPS Anonymous' contract.
 * From the Workflow Actions on the right hand side, click on the Activate Contract link.
 * Validate the service is properly deployed by click on the container that should be hosting this service.  The service should be listed on the Hosted Services tab.
+
 ### Create Payments
+
 #### Request Message
 Example SOAP request message:
 ```
@@ -61,6 +63,7 @@ Example SOAP request message:
    </soapenv:Body>
 </soapenv:Envelope>
 ```
+
 #### Response Message
 Example SOAP response message:
 ```
@@ -84,6 +87,7 @@ Example SOAP response message:
    </soap:Body>
 </soap:Envelope>
 ```
+
 #### Implementation
 Response Field Details:
 * ClientMsgID: Copied from the request message
