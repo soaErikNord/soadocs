@@ -11,7 +11,7 @@ The services, scripts and required policies are all stored in the CPS organizati
 When uploading to the PM environment, it is required to include the import property file.  This import will allow the virtual service endpoints to be hosted on the proper ND environment.
 
 Follow these steps to properly import the services into a valid PM and ND environment:
-1. Log into the PM environment with a proper user that has administrator rights.
+1 Log into the PM environment with a proper user that has administrator rights.
 2. From the left hand organization tree, select the ND cluster (or container) that will be hosting these services.
 3. Take not of the Container Key field.
 4. Open the migration.properties file.
