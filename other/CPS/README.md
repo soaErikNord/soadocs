@@ -1,10 +1,10 @@
 # CPS
 ## Payment Plus
 ### Installation and Configuration
-The CPS projects are being stored in a organization structure that looks like the following:
+The CPS projects are being stored in a organization structure that looks like the following:<br>
 --> Registry
-\t--> US Bank
-\t\t--> CPS
+&nbsp;&nbsp;--> US Bank
+&nbsp;&nbsp;&nbsp;&nbsp;--> CPS
 
 The services, scripts and required policies are all stored in the CPS organization.  These are all imported with the extracted archive file and will be replicated when these are uploaded into an existing PM environment.
 
