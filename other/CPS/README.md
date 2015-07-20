@@ -2,8 +2,8 @@
 ## Payment Plus
 ### Installation and Configuration
 The CPS projects are being stored in a organization structure that looks like the following:<br>
---> Registry
-&nbsp;&nbsp;--> US Bank
+--> Registry<br>
+&nbsp;&nbsp;--> US Bank<br>
 &nbsp;&nbsp;&nbsp;&nbsp;--> CPS
 
 The services, scripts and required policies are all stored in the CPS organization.  These are all imported with the extracted archive file and will be replicated when these are uploaded into an existing PM environment.
@@ -11,22 +11,22 @@ The services, scripts and required policies are all stored in the CPS organizati
 When uploading to the PM environment, it is required to include the import property file.  This import will allow the virtual service endpoints to be hosted on the proper ND environment.
 
 Follow these steps to properly import the services into a valid PM and ND environment:
-* Log into the PM environment with a proper user that has administrator rights.
-* From the left hand organization tree, select the ND cluster (or container) that will be hosting these services.
-* Take not of the Container Key field.
-* Open the migration.properties file.
-* Update '<replace this with your key>' with Container Key field that was copied in the step above.
-* Save this file.
-* From the left hand navigation pane, click on the Registry organization.  Note: this is the top parent organization, in some cases this could be renamed.
-* From the right hand actions portlet, click on the Import Package option.
-* For the Package Location, select the archive file that contains the services.
-* For the Migration Properties Location, select the migration.properties file that was update above.
-* Click on the Import button.  This will import everything properly into this PM environment.
-* Go to the following directory, US Bank --> CPS --> Policies --> Organizational Policies, and select the 'SchemaValidation' policy.
-* From the Workflow Actions on the right hand side, click on the Activate Policy link.
-* Go to the following directory, US Bank --> CPS --> Contracts --> Provided Contracts, and select the 'CPS Anonymous' contract.
-* From the Workflow Actions on the right hand side, click on the Activate Contract link.
-* Validate the service is properly deployed by click on the container that should be hosting this service.  The service should be listed on the Hosted Services tab.
+1. Log into the PM environment with a proper user that has administrator rights.
+2. From the left hand organization tree, select the ND cluster (or container) that will be hosting these services.
+3. Take not of the Container Key field.
+4. Open the migration.properties file.
+5. Update '<replace this with your key>' with Container Key field that was copied in the step above.
+6. Save this file.
+7. From the left hand navigation pane, click on the Registry organization.  Note: this is the top parent organization, in some cases this could be renamed.
+8. From the right hand actions portlet, click on the Import Package option.
+9. For the Package Location, select the archive file that contains the services.
+10. For the Migration Properties Location, select the migration.properties file that was update above.
+11. Click on the Import button.  This will import everything properly into this PM environment.
+12. Go to the following directory, US Bank --> CPS --> Policies --> Organizational Policies, and select the 'SchemaValidation' policy.
+13. From the Workflow Actions on the right hand side, click on the Activate Policy link.
+14. Go to the following directory, US Bank --> CPS --> Contracts --> Provided Contracts, and select the 'CPS Anonymous' contract.
+15. From the Workflow Actions on the right hand side, click on the Activate Contract link.
+16. Validate the service is properly deployed by click on the container that should be hosting this service.  The service should be listed on the Hosted Services tab.
 
 ### Create Payments
 
