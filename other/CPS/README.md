@@ -1,5 +1,5 @@
 # CPS
-## Payment Plus
+## HR Integraion
 ### Installation and Configuration
 The CPS projects are being stored in a organization structure that looks like the following:<br>
 --> Registry<br>
@@ -29,41 +29,290 @@ Follow these steps to properly import the services into a valid PM and ND enviro
 15. From the Workflow Actions on the right hand side, click on the Activate Contract link.
 16. Validate the service is properly deployed by click on the container that should be hosting this service.  The service should be listed on the Hosted Services tab.
 
-### Create Payments
+### Card Holder Account Setup
 
 #### Request Message
 Example SOAP request message:
 ```
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0" xmlns:pay1="http://www.usbank.com/PaymentPlusments/ws/schemas/PaymentPluswebservice">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/OSB/Schema.xsd" xmlns:sch1="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
    <soapenv:Header>
-       <pay:PaymentPlusCreateHeader> 
-         <pay:TransactionIdentifier>Test</pay:TransactionIdentifier> 
-         <!--Optional:--> 
-         <pay:MessageIdentifier>Test</pay:MessageIdentifier> 
-         <!--Optional:--> 
-         <pay:ProviderInfo>Test</pay:ProviderInfo> 
-      </pay:PaymentPlusCreateHeader> 
-      <pay1:userNameToken>usbc.uatsjmarsh</pay1:userNameToken> 
+      <sch:userNameToken>?</sch:userNameToken>
+      <sch1:USBSOAPHeader>
+         <sch1:TransactionIdentifier>?</sch1:TransactionIdentifier>
+         <sch1:ClientShortName>?</sch1:ClientShortName>
+         <sch1:RequestDate>?</sch1:RequestDate>
+      </sch1:USBSOAPHeader>
    </soapenv:Header>
    <soapenv:Body>
-      <pay:PaymentPlusCreateRequest> 
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID> 
-         <pay:OrgShortName>ADMIN7</pay:OrgShortName> 
-         <pay:PaymentType>PA</pay:PaymentType> 
-         <pay:RequestDate>2015-06-30</pay:RequestDate> 
-         <pay:ControlNumber>ETMWSDLTEST</pay:ControlNumber> 
-         <!--Optional:--> 
-         <pay:PaymentAccountNumber>5330385000000237</pay:PaymentAccountNumber> 
-         <pay:PaymentAmount>1.00</pay:PaymentAmount> 
-         <pay:ExpirationDate>2015-07-10</pay:ExpirationDate> 
-         <pay:MerchantName>ETM TEST</pay:MerchantName> 
-         <pay:Comments>TEST</pay:Comments> 
-         <!--0 to 20 repetitions:--> 
-         <pay:CustomAttribute> 
-            <pay:AttributeKey>TEST</pay:AttributeKey> 
-            <pay:AttributeValue>123456</pay:AttributeValue> 
-         </pay:CustomAttribute> 
-      </pay:PaymentPlusCreateRequest> 
+      <sch1:CardholderMaintenanceRequest>
+         <sch1:CardholderAccountIdentifier>
+            <sch1:CardholderAccountID>?</sch1:CardholderAccountID>
+         </sch1:CardholderAccountIdentifier>
+         <!--Optional:-->
+         <sch1:Demographics>
+            <!--Optional:-->
+            <sch1:PersonalInfo>
+               <!--Optional:-->
+               <sch1:IDNumber>?</sch1:IDNumber>
+               <!--Optional:-->
+               <sch1:TaxExemptNumber>?</sch1:TaxExemptNumber>
+               <!--Optional:-->
+               <sch1:CardholderCategory>?</sch1:CardholderCategory>
+            </sch1:PersonalInfo>
+            <!--Optional:-->
+            <sch1:OptionalFields>
+               <!--Optional:-->
+               <sch1:OptionalField1>?</sch1:OptionalField1>
+               <!--Optional:-->
+               <sch1:OptionalField2>?</sch1:OptionalField2>
+               <!--Optional:-->
+               <sch1:OptionalField3>?</sch1:OptionalField3>
+            </sch1:OptionalFields>
+            <!--Optional:-->
+            <sch1:Address>
+               <sch1:AddressLine1>?</sch1:AddressLine1>
+               <!--Optional:-->
+               <sch1:AddressLine2>?</sch1:AddressLine2>
+               <sch1:City>?</sch1:City>
+               <sch1:StateOrProvince>?</sch1:StateOrProvince>
+               <sch1:Country>?</sch1:Country>
+               <sch1:PostalCode>?</sch1:PostalCode>
+            </sch1:Address>
+            <!--Optional:-->
+            <sch1:ContactInfo>
+               <!--Optional:-->
+               <sch1:HomePhone>?</sch1:HomePhone>
+               <!--Optional:-->
+               <sch1:WorkPhone>?</sch1:WorkPhone>
+               <!--Optional:-->
+               <sch1:AlternatePhone>?</sch1:AlternatePhone>
+               <!--Optional:-->
+               <sch1:Fax>?</sch1:Fax>
+               <!--Optional:-->
+               <sch1:EmailAddress>?</sch1:EmailAddress>
+            </sch1:ContactInfo>
+            <!--Optional:-->
+            <sch1:DemographicComments>?</sch1:DemographicComments>
+         </sch1:Demographics>
+         <!--Optional:-->
+         <sch1:AccountInfo>
+            <!--Optional:-->
+            <sch1:ReorderChecks>?</sch1:ReorderChecks>
+            <!--Optional:-->
+            <sch1:ChecksValidation>
+               <!--You have a CHOICE of the next 2 items at this level-->
+               <sch1:ChecksValidDollarAmt>?</sch1:ChecksValidDollarAmt>
+               <sch1:ChecksValidNoOfDays>?</sch1:ChecksValidNoOfDays>
+            </sch1:ChecksValidation>
+            <!--Optional:-->
+            <sch1:PlasticReoder>?</sch1:PlasticReoder>
+            <!--Optional:-->
+            <sch1:PINReorder>?</sch1:PINReorder>
+            <!--Optional:-->
+            <sch1:MailToPlanAdministrator>?</sch1:MailToPlanAdministrator>
+            <!--Optional:-->
+            <sch1:PlasticLanguage>?</sch1:PlasticLanguage>
+            <!--Optional:-->
+            <sch1:RegionCode>?</sch1:RegionCode>
+            <!--Optional:-->
+            <sch1:AccountStatus>?</sch1:AccountStatus>
+            <!--Optional:-->
+            <sch1:OrganizationName>?</sch1:OrganizationName>
+            <!--Optional:-->
+            <sch1:ReportingHierarchy>
+               <!--Optional:-->
+               <sch1:ReportingLevel1>?</sch1:ReportingLevel1>
+               <!--Optional:-->
+               <sch1:ReportingLevel2>?</sch1:ReportingLevel2>
+               <!--Optional:-->
+               <sch1:ReportingLevel3>?</sch1:ReportingLevel3>
+               <!--Optional:-->
+               <sch1:ReportingLevel4>?</sch1:ReportingLevel4>
+               <!--Optional:-->
+               <sch1:ReportingLevel5>?</sch1:ReportingLevel5>
+               <!--Optional:-->
+               <sch1:ReportingLevel6>?</sch1:ReportingLevel6>
+               <!--Optional:-->
+               <sch1:ReportingLevel7>?</sch1:ReportingLevel7>
+            </sch1:ReportingHierarchy>
+            <!--Optional:-->
+            <sch1:Dates>
+               <!--Optional:-->
+               <sch1:ExpiryDate>?</sch1:ExpiryDate>
+               <!--Optional:-->
+               <sch1:TempAuthStartDate>?</sch1:TempAuthStartDate>
+               <!--Optional:-->
+               <sch1:TempAuthEndDate>?</sch1:TempAuthEndDate>
+            </sch1:Dates>
+            <!--Optional:-->
+            <sch1:AuthorizedUser>
+               <sch1:FirstNameAuthUser>?</sch1:FirstNameAuthUser>
+               <sch1:LastNameAuthUser>?</sch1:LastNameAuthUser>
+               <!--Optional:-->
+               <sch1:MiddleInitialAuthUser>?</sch1:MiddleInitialAuthUser>
+            </sch1:AuthorizedUser>
+            <!--Optional:-->
+            <sch1:AccountInfoComments>?</sch1:AccountInfoComments>
+         </sch1:AccountInfo>
+         <!--Optional:-->
+         <sch1:HierarchyNodeMovement>
+            <sch1:ProcessingHierarchy>
+               <sch1:BankNumber>?</sch1:BankNumber>
+               <sch1:AgentNumber>?</sch1:AgentNumber>
+               <sch1:CompanyNumber>?</sch1:CompanyNumber>
+            </sch1:ProcessingHierarchy>
+            <!--Optional:-->
+            <sch1:ProcessingSubHierarchy>
+               <sch1:DivisionNumber>?</sch1:DivisionNumber>
+               <sch1:DepartmentNumber>?</sch1:DepartmentNumber>
+            </sch1:ProcessingSubHierarchy>
+            <!--Optional:-->
+            <sch1:ReportingHierarchy>
+               <!--Optional:-->
+               <sch1:ReportingLevel1>?</sch1:ReportingLevel1>
+               <!--Optional:-->
+               <sch1:ReportingLevel2>?</sch1:ReportingLevel2>
+               <!--Optional:-->
+               <sch1:ReportingLevel3>?</sch1:ReportingLevel3>
+               <!--Optional:-->
+               <sch1:ReportingLevel4>?</sch1:ReportingLevel4>
+               <!--Optional:-->
+               <sch1:ReportingLevel5>?</sch1:ReportingLevel5>
+               <!--Optional:-->
+               <sch1:ReportingLevel6>?</sch1:ReportingLevel6>
+               <!--Optional:-->
+               <sch1:ReportingLevel7>?</sch1:ReportingLevel7>
+            </sch1:ReportingHierarchy>
+            <!--Optional:-->
+            <sch1:DefaultAccountingCode>
+               <!--0 to 150 repetitions:-->
+               <sch1:AccountingCodeSegment>
+                  <sch1:SegmentName>?</sch1:SegmentName>
+                  <sch1:SegmentValue>?</sch1:SegmentValue>
+               </sch1:AccountingCodeSegment>
+            </sch1:DefaultAccountingCode>
+            <!--Optional:-->
+            <sch1:AccountInfoComments>?</sch1:AccountInfoComments>
+         </sch1:HierarchyNodeMovement>
+         <!--Optional:-->
+         <sch1:DefaultAccountingCode>
+            <!--0 to 150 repetitions:-->
+            <sch1:AccountingCodeSegment>
+               <sch1:SegmentName>?</sch1:SegmentName>
+               <sch1:SegmentValue>?</sch1:SegmentValue>
+            </sch1:AccountingCodeSegment>
+            <!--Optional:-->
+            <sch1:DACComments>?</sch1:DACComments>
+         </sch1:DefaultAccountingCode>
+         <!--Optional:-->
+         <sch1:AuthLimits>
+            <!--Optional:-->
+            <sch1:ReferToParent>
+               <!--Optional:-->
+               <sch1:MerchantAuthorizationControls>?</sch1:MerchantAuthorizationControls>
+               <!--Optional:-->
+               <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+               <!--Optional:-->
+               <sch1:Velocity>?</sch1:Velocity>
+            </sch1:ReferToParent>
+            <!--Optional:-->
+            <sch1:AuthLimits>
+               <!--Optional:-->
+               <sch1:CreditLimit>?</sch1:CreditLimit>
+               <!--Optional:-->
+               <sch1:PercentCash>?</sch1:PercentCash>
+               <!--Optional:-->
+               <sch1:QuarterlyLimit>?</sch1:QuarterlyLimit>
+               <!--Optional:-->
+               <sch1:QuarterlyTransLimit>?</sch1:QuarterlyTransLimit>
+               <!--Optional:-->
+               <sch1:YearlyLimit>?</sch1:YearlyLimit>
+               <!--Optional:-->
+               <sch1:YearlyTransLimit>?</sch1:YearlyTransLimit>
+            </sch1:AuthLimits>
+            <!--Optional:-->
+            <sch1:CommonAuthLimits>
+               <!--Optional:-->
+               <sch1:BaseAuthLimits>
+                  <!--Optional:-->
+                  <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                  <!--Optional:-->
+                  <sch1:DailyLimit>?</sch1:DailyLimit>
+                  <!--Optional:-->
+                  <sch1:DailyTransLimit>?</sch1:DailyTransLimit>
+                  <!--Optional:-->
+                  <sch1:CycleLimit>?</sch1:CycleLimit>
+                  <!--Optional:-->
+                  <sch1:CycleTransLimit>?</sch1:CycleTransLimit>
+                  <!--Optional:-->
+                  <sch1:MonthlyLimit>?</sch1:MonthlyLimit>
+                  <!--Optional:-->
+                  <sch1:MonthlyTransLimit>?</sch1:MonthlyTransLimit>
+               </sch1:BaseAuthLimits>
+               <!--Optional:-->
+               <sch1:Velocity>
+                  <!--Optional:-->
+                  <sch1:OtherDollarAmount>?</sch1:OtherDollarAmount>
+                  <!--Optional:-->
+                  <sch1:OtherTranLimit>?</sch1:OtherTranLimit>
+                  <!--Optional:-->
+                  <sch1:RefreshFromDate>?</sch1:RefreshFromDate>
+                  <!--Optional:-->
+                  <sch1:DaysInRefreshCycle>?</sch1:DaysInRefreshCycle>
+                  <!--Optional:-->
+                  <sch1:RefreshToDate>?</sch1:RefreshToDate>
+               </sch1:Velocity>
+            </sch1:CommonAuthLimits>
+            <!--0 to 9 repetitions:-->
+            <sch1:MerchantAuthControls>
+               <sch1:Action>?</sch1:Action>
+               <sch1:Name>?</sch1:Name>
+               <sch1:AuthAction>?</sch1:AuthAction>
+               <sch1:ReferToParent>
+                  <!--Optional:-->
+                  <sch1:MerchantAuthorizationControls>?</sch1:MerchantAuthorizationControls>
+                  <!--Optional:-->
+                  <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                  <!--Optional:-->
+                  <sch1:Velocity>?</sch1:Velocity>
+               </sch1:ReferToParent>
+               <sch1:MerchantLimits>
+                  <!--Optional:-->
+                  <sch1:BaseAuthLimits>
+                     <!--Optional:-->
+                     <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                     <!--Optional:-->
+                     <sch1:DailyLimit>?</sch1:DailyLimit>
+                     <!--Optional:-->
+                     <sch1:DailyTransLimit>?</sch1:DailyTransLimit>
+                     <!--Optional:-->
+                     <sch1:CycleLimit>?</sch1:CycleLimit>
+                     <!--Optional:-->
+                     <sch1:CycleTransLimit>?</sch1:CycleTransLimit>
+                     <!--Optional:-->
+                     <sch1:MonthlyLimit>?</sch1:MonthlyLimit>
+                     <!--Optional:-->
+                     <sch1:MonthlyTransLimit>?</sch1:MonthlyTransLimit>
+                  </sch1:BaseAuthLimits>
+                  <!--Optional:-->
+                  <sch1:Velocity>
+                     <!--Optional:-->
+                     <sch1:OtherDollarAmount>?</sch1:OtherDollarAmount>
+                     <!--Optional:-->
+                     <sch1:OtherTranLimit>?</sch1:OtherTranLimit>
+                     <!--Optional:-->
+                     <sch1:RefreshFromDate>?</sch1:RefreshFromDate>
+                     <!--Optional:-->
+                     <sch1:DaysInRefreshCycle>?</sch1:DaysInRefreshCycle>
+                     <!--Optional:-->
+                     <sch1:RefreshToDate>?</sch1:RefreshToDate>
+                  </sch1:Velocity>
+               </sch1:MerchantLimits>
+            </sch1:MerchantAuthControls>
+            <!--Optional:-->
+            <sch1:AuthLimitsComments>?</sch1:AuthLimitsComments>
+         </sch1:AuthLimits>
+      </sch1:CardholderMaintenanceRequest>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
@@ -73,60 +322,285 @@ Example SOAP response message:
 ```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Header>
-      <pay:PaymentPlusInterface xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0"/>
+      <sch:HRIntegrationSOAP xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd"/>
    </soap:Header>
    <soap:Body>
-      <pay:PaymentPlusCreateResponse xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0">
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:USBRequestID>330750703429375750000000000000000000</pay:USBRequestID>
-         <pay:ReferenceID>q1YivWy7ts</pay:ReferenceID>
-         <pay:PaymentType>PA</pay:PaymentType>
-         <pay:ControlNumber>2hKpY3z</pay:ControlNumber>
-         <pay:PaymentAccountNumber>5330385000000237</pay:PaymentAccountNumber>
-         <pay:ExpirationDate>2015-07-10</pay:ExpirationDate>
-         <pay:MerchantName>UFdbYtn5bzbiPXV</pay:MerchantName>
-         <pay:SUAAccountNumber>q4BbQn4Wjk1YYKV1</pay:SUAAccountNumber>
-         <pay:SUAExpirationDate>07-2016</pay:SUAExpirationDate>
-      </pay:PaymentPlusCreateResponse>
+      <sch:CardholderMaintenanceReply xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
+         <sch:RequestStatus>
+            <sch:USBRequestID>422322664905418400000000000000000000</sch:USBRequestID>
+            <sch:Status>Processing</sch:Status>
+            <sch:Message>Mock Service Created</sch:Message>
+            <sch:AccountData>
+               <sch:AccountID>768755555453</sch:AccountID>
+            </sch:AccountData>
+         </sch:RequestStatus>
+      </sch:CardholderMaintenanceReply>
    </soap:Body>
 </soap:Envelope>
 ```
 
 #### Implementation
 Response Field Details:
-* ClientMsgID: Copied from the request message
 * USBRequestID: Randomly generated numeric field with a length of 36
-* ReferenceID: Randomly generated alpha-numeric field with a length of 10
-* PaymentType: Copied from the request message
-* ControlNumber: Randomly generated alpha-numeric field with a length of 16
-* PaymentAccountNumber: Copied from the request message
-* ExpirationDate: Copied from the request message
-* MerchantName: Randomly generated alpha-numeric field with a length of 16
-* SUAAccountNumber: Randomly generated alpha-numeric field with a length of 16
-* SUAExpirationDate: Randomly generated date field between now and the year 2026
+* Status: Randomly picked from Processing, Complete, Failure, Unknown Request, Indeterminate
+* Message: Always returns 'Mock Service Created'
+* AccountID: Randomly generated numeric field with a length of 12
 
-### Request CSC
+### Maintain Cardholder Account
 
 #### Request Message
 Example SOAP request message:
 ```
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0" xmlns:pay1="http://www.usbank.com/PaymentPlusments/ws/schemas/PaymentPluswebservice">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/OSB/Schema.xsd" xmlns:sch1="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
    <soapenv:Header>
-      <pay:PaymentPlusCSCHeader>
-         <pay:TransactionIdentifier>?</pay:TransactionIdentifier>
-         <!--Optional:-->
-         <pay:MessageIdentifier>?</pay:MessageIdentifier>
-         <!--Optional:-->
-         <pay:ProviderInfo>?</pay:ProviderInfo>
-      </pay:PaymentPlusCSCHeader>
-      <pay1:userNameToken>?</pay1:userNameToken>
+      <sch:userNameToken>?</sch:userNameToken>
+      <sch1:USBSOAPHeader>
+         <sch1:TransactionIdentifier>?</sch1:TransactionIdentifier>
+         <sch1:ClientShortName>?</sch1:ClientShortName>
+         <sch1:RequestDate>?</sch1:RequestDate>
+      </sch1:USBSOAPHeader>
    </soapenv:Header>
    <soapenv:Body>
-      <pay:PaymentPlusCSCRequest>
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:OrgShortName>ADMIN7</pay:OrgShortName>
-         <pay:ReferenceID>q1YivWy7ts</pay:ReferenceID>
-      </pay:PaymentPlusCSCRequest>
+      <sch1:CardholderSetupRequest>
+         <sch1:ManagingAccountIdentifier>
+            <!--You have a CHOICE of the next 2 items at this level-->
+            <sch1:ManagingAccountID>?</sch1:ManagingAccountID>
+            <sch1:ProcessingHierarchy>
+               <sch1:BankNumber>?</sch1:BankNumber>
+               <sch1:AgentNumber>?</sch1:AgentNumber>
+               <sch1:CompanyNumber>?</sch1:CompanyNumber>
+            </sch1:ProcessingHierarchy>
+         </sch1:ManagingAccountIdentifier>
+         <sch1:Demographics>
+            <sch1:SetupName>
+               <sch1:FirstName>?</sch1:FirstName>
+               <sch1:LastName>?</sch1:LastName>
+               <!--Optional:-->
+               <sch1:MiddleInitial>?</sch1:MiddleInitial>
+            </sch1:SetupName>
+            <sch1:PersonalInfo>
+               <!--Optional:-->
+               <sch1:DateOfBirth>?</sch1:DateOfBirth>
+               <!--Optional:-->
+               <sch1:IDNumber>?</sch1:IDNumber>
+               <!--Optional:-->
+               <sch1:SSN>?</sch1:SSN>
+               <!--Optional:-->
+               <sch1:TaxExemptNumber>?</sch1:TaxExemptNumber>
+               <!--Optional:-->
+               <sch1:CardholderCategory>?</sch1:CardholderCategory>
+            </sch1:PersonalInfo>
+            <sch1:OptionalFields>
+               <!--Optional:-->
+               <sch1:OptionalField1>?</sch1:OptionalField1>
+               <!--Optional:-->
+               <sch1:OptionalField2>?</sch1:OptionalField2>
+               <!--Optional:-->
+               <sch1:OptionalField3>?</sch1:OptionalField3>
+            </sch1:OptionalFields>
+            <sch1:Address>
+               <sch1:AddressLine1>?</sch1:AddressLine1>
+               <!--Optional:-->
+               <sch1:AddressLine2>?</sch1:AddressLine2>
+               <sch1:City>?</sch1:City>
+               <sch1:StateOrProvince>?</sch1:StateOrProvince>
+               <sch1:Country>?</sch1:Country>
+               <sch1:PostalCode>?</sch1:PostalCode>
+            </sch1:Address>
+            <sch1:ContactInfo>
+               <!--Optional:-->
+               <sch1:HomePhone>?</sch1:HomePhone>
+               <sch1:WorkPhone>?</sch1:WorkPhone>
+               <!--Optional:-->
+               <sch1:AlternatePhone>?</sch1:AlternatePhone>
+               <!--Optional:-->
+               <sch1:Fax>?</sch1:Fax>
+               <!--Optional:-->
+               <sch1:EmailAddress>?</sch1:EmailAddress>
+            </sch1:ContactInfo>
+            <!--Optional:-->
+            <sch1:DemographicComments>?</sch1:DemographicComments>
+         </sch1:Demographics>
+         <sch1:AccountInfo>
+            <sch1:Checks>?</sch1:Checks>
+            <!--Optional:-->
+            <sch1:ChecksValidation>
+               <!--You have a CHOICE of the next 2 items at this level-->
+               <sch1:ChecksValidDollarAmt>?</sch1:ChecksValidDollarAmt>
+               <sch1:ChecksValidNoOfDays>?</sch1:ChecksValidNoOfDays>
+            </sch1:ChecksValidation>
+            <sch1:Plastic>?</sch1:Plastic>
+            <!--Optional:-->
+            <sch1:MailToPlanAdministrator>?</sch1:MailToPlanAdministrator>
+            <!--Optional:-->
+            <sch1:PlasticLanguage>?</sch1:PlasticLanguage>
+            <!--Optional:-->
+            <sch1:RegionCode>?</sch1:RegionCode>
+            <!--Optional:-->
+            <sch1:CycleDay>?</sch1:CycleDay>
+            <!--Optional:-->
+            <sch1:OrganizationName>?</sch1:OrganizationName>
+            <!--Optional:-->
+            <sch1:ReportingHierarchy>
+               <!--Optional:-->
+               <sch1:ReportingLevel1>?</sch1:ReportingLevel1>
+               <!--Optional:-->
+               <sch1:ReportingLevel2>?</sch1:ReportingLevel2>
+               <!--Optional:-->
+               <sch1:ReportingLevel3>?</sch1:ReportingLevel3>
+               <!--Optional:-->
+               <sch1:ReportingLevel4>?</sch1:ReportingLevel4>
+               <!--Optional:-->
+               <sch1:ReportingLevel5>?</sch1:ReportingLevel5>
+               <!--Optional:-->
+               <sch1:ReportingLevel6>?</sch1:ReportingLevel6>
+               <!--Optional:-->
+               <sch1:ReportingLevel7>?</sch1:ReportingLevel7>
+            </sch1:ReportingHierarchy>
+            <sch1:ProductName>?</sch1:ProductName>
+            <!--Optional:-->
+            <sch1:Dates>
+               <!--Optional:-->
+               <sch1:ExpiryDate>?</sch1:ExpiryDate>
+               <!--Optional:-->
+               <sch1:TempAuthStartDate>?</sch1:TempAuthStartDate>
+               <!--Optional:-->
+               <sch1:TempAuthEndDate>?</sch1:TempAuthEndDate>
+            </sch1:Dates>
+            <!--Optional:-->
+            <sch1:AlternateAddress>
+               <sch1:AddressLine1>?</sch1:AddressLine1>
+               <!--Optional:-->
+               <sch1:AddressLine2>?</sch1:AddressLine2>
+               <sch1:City>?</sch1:City>
+               <sch1:StateOrProvince>?</sch1:StateOrProvince>
+               <sch1:Country>?</sch1:Country>
+               <sch1:PostalCode>?</sch1:PostalCode>
+            </sch1:AlternateAddress>
+            <!--Optional:-->
+            <sch1:AuthorizedUser>
+               <sch1:FirstNameAuthUser>?</sch1:FirstNameAuthUser>
+               <sch1:LastNameAuthUser>?</sch1:LastNameAuthUser>
+               <!--Optional:-->
+               <sch1:MiddleInitialAuthUser>?</sch1:MiddleInitialAuthUser>
+            </sch1:AuthorizedUser>
+            <!--Optional:-->
+            <sch1:AccountInfoComments>?</sch1:AccountInfoComments>
+         </sch1:AccountInfo>
+         <sch1:DefaultAccountingCode>
+            <!--0 to 150 repetitions:-->
+            <sch1:AccountingCodeSegment>
+               <sch1:SegmentName>?</sch1:SegmentName>
+               <sch1:SegmentValue>?</sch1:SegmentValue>
+            </sch1:AccountingCodeSegment>
+            <!--Optional:-->
+            <sch1:DACComments>?</sch1:DACComments>
+         </sch1:DefaultAccountingCode>
+         <!--Optional:-->
+         <sch1:AuthLimits>
+            <sch1:ReferToParent>
+               <!--Optional:-->
+               <sch1:MerchantAuthorizationControls>?</sch1:MerchantAuthorizationControls>
+               <!--Optional:-->
+               <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+               <!--Optional:-->
+               <sch1:Velocity>?</sch1:Velocity>
+            </sch1:ReferToParent>
+            <sch1:AuthLimits>
+               <!--Optional:-->
+               <sch1:CreditLimit>?</sch1:CreditLimit>
+               <!--Optional:-->
+               <sch1:PercentCash>?</sch1:PercentCash>
+               <!--Optional:-->
+               <sch1:QuarterlyLimit>?</sch1:QuarterlyLimit>
+               <!--Optional:-->
+               <sch1:QuarterlyTransLimit>?</sch1:QuarterlyTransLimit>
+               <!--Optional:-->
+               <sch1:YearlyLimit>?</sch1:YearlyLimit>
+               <!--Optional:-->
+               <sch1:YearlyTransLimit>?</sch1:YearlyTransLimit>
+            </sch1:AuthLimits>
+            <sch1:CommonAuthLimits>
+               <!--Optional:-->
+               <sch1:BaseAuthLimits>
+                  <!--Optional:-->
+                  <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                  <!--Optional:-->
+                  <sch1:DailyLimit>?</sch1:DailyLimit>
+                  <!--Optional:-->
+                  <sch1:DailyTransLimit>?</sch1:DailyTransLimit>
+                  <!--Optional:-->
+                  <sch1:CycleLimit>?</sch1:CycleLimit>
+                  <!--Optional:-->
+                  <sch1:CycleTransLimit>?</sch1:CycleTransLimit>
+                  <!--Optional:-->
+                  <sch1:MonthlyLimit>?</sch1:MonthlyLimit>
+                  <!--Optional:-->
+                  <sch1:MonthlyTransLimit>?</sch1:MonthlyTransLimit>
+               </sch1:BaseAuthLimits>
+               <!--Optional:-->
+               <sch1:Velocity>
+                  <!--Optional:-->
+                  <sch1:OtherDollarAmount>?</sch1:OtherDollarAmount>
+                  <!--Optional:-->
+                  <sch1:OtherTranLimit>?</sch1:OtherTranLimit>
+                  <!--Optional:-->
+                  <sch1:RefreshFromDate>?</sch1:RefreshFromDate>
+                  <!--Optional:-->
+                  <sch1:DaysInRefreshCycle>?</sch1:DaysInRefreshCycle>
+                  <!--Optional:-->
+                  <sch1:RefreshToDate>?</sch1:RefreshToDate>
+               </sch1:Velocity>
+            </sch1:CommonAuthLimits>
+            <!--0 to 9 repetitions:-->
+            <sch1:MerchantAuthControls>
+               <sch1:Name>?</sch1:Name>
+               <sch1:AuthAction>?</sch1:AuthAction>
+               <sch1:ReferToParent>
+                  <!--Optional:-->
+                  <sch1:MerchantAuthorizationControls>?</sch1:MerchantAuthorizationControls>
+                  <!--Optional:-->
+                  <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                  <!--Optional:-->
+                  <sch1:Velocity>?</sch1:Velocity>
+               </sch1:ReferToParent>
+               <sch1:MerchantLimits>
+                  <!--Optional:-->
+                  <sch1:BaseAuthLimits>
+                     <!--Optional:-->
+                     <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                     <!--Optional:-->
+                     <sch1:DailyLimit>?</sch1:DailyLimit>
+                     <!--Optional:-->
+                     <sch1:DailyTransLimit>?</sch1:DailyTransLimit>
+                     <!--Optional:-->
+                     <sch1:CycleLimit>?</sch1:CycleLimit>
+                     <!--Optional:-->
+                     <sch1:CycleTransLimit>?</sch1:CycleTransLimit>
+                     <!--Optional:-->
+                     <sch1:MonthlyLimit>?</sch1:MonthlyLimit>
+                     <!--Optional:-->
+                     <sch1:MonthlyTransLimit>?</sch1:MonthlyTransLimit>
+                  </sch1:BaseAuthLimits>
+                  <!--Optional:-->
+                  <sch1:Velocity>
+                     <!--Optional:-->
+                     <sch1:OtherDollarAmount>?</sch1:OtherDollarAmount>
+                     <!--Optional:-->
+                     <sch1:OtherTranLimit>?</sch1:OtherTranLimit>
+                     <!--Optional:-->
+                     <sch1:RefreshFromDate>?</sch1:RefreshFromDate>
+                     <!--Optional:-->
+                     <sch1:DaysInRefreshCycle>?</sch1:DaysInRefreshCycle>
+                     <!--Optional:-->
+                     <sch1:RefreshToDate>?</sch1:RefreshToDate>
+                  </sch1:Velocity>
+               </sch1:MerchantLimits>
+            </sch1:MerchantAuthControls>
+            <!--Optional:-->
+            <sch1:AuthLimitsComments>?</sch1:AuthLimitsComments>
+         </sch1:AuthLimits>
+      </sch1:CardholderSetupRequest>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
@@ -136,50 +610,256 @@ Example SOAP response message:
 ```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Header>
-      <pay:PaymentPlusInterface xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0"/>
+      <sch:HRIntegrationSOAP xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd"/>
    </soap:Header>
    <soap:Body>
-      <pay:PaymentPlusCSCResponse xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0">
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:USBRequestID>304128123796807200000000000000000000</pay:USBRequestID>
-         <pay:ReferenceID>w2XEjKa0Kn</pay:ReferenceID>
-         <pay:SecurityCode>6229</pay:SecurityCode>
-      </pay:PaymentPlusCSCResponse>
+      <sch:CardholderSetupReply xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
+         <sch:RequestStatus>
+            <sch:USBRequestID>759579214440996500000000000000000000</sch:USBRequestID>
+            <sch:Status>Failure</sch:Status>
+            <sch:Message>Mock Service Created</sch:Message>
+            <sch:AccountData>
+               <sch:AccountID>322625425494</sch:AccountID>
+            </sch:AccountData>
+         </sch:RequestStatus>
+      </sch:CardholderSetupReply>
    </soap:Body>
 </soap:Envelope>
 ```
 
 #### Implementation
 Response Field Details:
-* ClientMsgID: Copied from the request message
 * USBRequestID: Randomly generated numeric field with a length of 36
-* ReferenceID: Randomly generated alpha-numeric field with a length of 10
-* SecurityCode: Randomly generated numeric field with a length of 4
+* Status: Randomly picked from Processing, Complete, Failure, Unknown Request, Indeterminate
+* Message: Always returns 'Mock Service Created'
+* AccountID: Randomly generated numeric field with a length of 12
 
-### SUA Activation
+### Maintain Setup Account
 
 #### Request Message
 Example SOAP request message:
 ```
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0" xmlns:pay1="http://www.usbank.com/PaymentPlusments/ws/schemas/PaymentPluswebservice">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/OSB/Schema.xsd" xmlns:sch1="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
    <soapenv:Header>
-      <pay:SUAServiceHeader>
-         <pay:TransactionIdentifier>?</pay:TransactionIdentifier>
-         <!--Optional:-->
-         <pay:MessageIdentifier>?</pay:MessageIdentifier>
-         <!--Optional:-->
-         <pay:ProviderInfo>?</pay:ProviderInfo>
-      </pay:SUAServiceHeader>
-      <pay1:userNameToken>?</pay1:userNameToken>
+      <sch:userNameToken>?</sch:userNameToken>
+      <sch1:USBSOAPHeader>
+         <sch1:TransactionIdentifier>?</sch1:TransactionIdentifier>
+         <sch1:ClientShortName>?</sch1:ClientShortName>
+         <sch1:RequestDate>?</sch1:RequestDate>
+      </sch1:USBSOAPHeader>
    </soapenv:Header>
    <soapenv:Body>
-      <pay:SUAActivateRequest>
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:OrgShortName>ADMIN7</pay:OrgShortName>
-         <pay:RequestDate>2015-07-20</pay:RequestDate>
-         <pay:PaymentAccountNumber>5330385000000237</pay:PaymentAccountNumber>
-         <pay:RequestedAmount>100.00</pay:RequestedAmount>
-      </pay:SUAActivateRequest>
+      <sch1:ManagingAccountSetupRequest>
+         <sch1:Demographics>
+            <sch1:SetupName>
+               <sch1:FirstName>?</sch1:FirstName>
+               <sch1:LastName>?</sch1:LastName>
+               <!--Optional:-->
+               <sch1:MiddleInitial>?</sch1:MiddleInitial>
+            </sch1:SetupName>
+            <sch1:PersonalInfo>
+               <!--Optional:-->
+               <sch1:DateOfBirth>?</sch1:DateOfBirth>
+               <!--Optional:-->
+               <sch1:IDNumber>?</sch1:IDNumber>
+               <!--Optional:-->
+               <sch1:TaxExemptNumber>?</sch1:TaxExemptNumber>
+            </sch1:PersonalInfo>
+            <sch1:OptionalFields>
+               <!--Optional:-->
+               <sch1:OptionalField1>?</sch1:OptionalField1>
+               <!--Optional:-->
+               <sch1:OptionalField2>?</sch1:OptionalField2>
+               <!--Optional:-->
+               <sch1:OptionalField3>?</sch1:OptionalField3>
+            </sch1:OptionalFields>
+            <sch1:Address>
+               <sch1:AddressLine1>?</sch1:AddressLine1>
+               <!--Optional:-->
+               <sch1:AddressLine2>?</sch1:AddressLine2>
+               <sch1:City>?</sch1:City>
+               <sch1:StateOrProvince>?</sch1:StateOrProvince>
+               <sch1:Country>?</sch1:Country>
+               <sch1:PostalCode>?</sch1:PostalCode>
+            </sch1:Address>
+            <sch1:ContactInfo>
+               <!--Optional:-->
+               <sch1:HomePhone>?</sch1:HomePhone>
+               <sch1:WorkPhone>?</sch1:WorkPhone>
+               <!--Optional:-->
+               <sch1:AlternatePhone>?</sch1:AlternatePhone>
+               <!--Optional:-->
+               <sch1:Fax>?</sch1:Fax>
+               <!--Optional:-->
+               <sch1:EmailAddress>?</sch1:EmailAddress>
+            </sch1:ContactInfo>
+            <!--Optional:-->
+            <sch1:DemographicComments>?</sch1:DemographicComments>
+         </sch1:Demographics>
+         <sch1:ProcessingHierarchy>
+            <sch1:BankNumber>?</sch1:BankNumber>
+            <sch1:AgentNumber>?</sch1:AgentNumber>
+         </sch1:ProcessingHierarchy>
+         <sch1:AccountInfo>
+            <!--Optional:-->
+            <sch1:OrganizationName>?</sch1:OrganizationName>
+            <sch1:ProductName>?</sch1:ProductName>
+            <!--Optional:-->
+            <sch1:ReportingHierarchy>
+               <!--Optional:-->
+               <sch1:ReportingLevel1>?</sch1:ReportingLevel1>
+               <!--Optional:-->
+               <sch1:ReportingLevel2>?</sch1:ReportingLevel2>
+               <!--Optional:-->
+               <sch1:ReportingLevel3>?</sch1:ReportingLevel3>
+               <!--Optional:-->
+               <sch1:ReportingLevel4>?</sch1:ReportingLevel4>
+               <!--Optional:-->
+               <sch1:ReportingLevel5>?</sch1:ReportingLevel5>
+               <!--Optional:-->
+               <sch1:ReportingLevel6>?</sch1:ReportingLevel6>
+               <!--Optional:-->
+               <sch1:ReportingLevel7>?</sch1:ReportingLevel7>
+            </sch1:ReportingHierarchy>
+            <!--Optional:-->
+            <sch1:Dates>
+               <!--Optional:-->
+               <sch1:TempAuthStartDate>?</sch1:TempAuthStartDate>
+               <!--Optional:-->
+               <sch1:TempAuthEndDate>?</sch1:TempAuthEndDate>
+            </sch1:Dates>
+            <!--Optional:-->
+            <sch1:AccountInfoComments>?</sch1:AccountInfoComments>
+         </sch1:AccountInfo>
+         <!--Optional:-->
+         <sch1:ExtractInfo>
+            <!--Optional:-->
+            <sch1:CostTransfer>?</sch1:CostTransfer>
+            <!--Optional:-->
+            <sch1:SendCostTransfer>?</sch1:SendCostTransfer>
+            <!--Optional:-->
+            <sch1:CreditInv>?</sch1:CreditInv>
+            <!--Optional:-->
+            <sch1:SendCreditInv>?</sch1:SendCreditInv>
+            <!--Optional:-->
+            <sch1:Inv>?</sch1:Inv>
+            <!--Optional:-->
+            <sch1:SendInv>?</sch1:SendInv>
+            <!--Optional:-->
+            <sch1:Oblig>?</sch1:Oblig>
+            <!--Optional:-->
+            <sch1:SendOblig>?</sch1:SendOblig>
+            <!--Optional:-->
+            <sch1:ExtractInfoComments>?</sch1:ExtractInfoComments>
+         </sch1:ExtractInfo>
+         <!--Optional:-->
+         <sch1:ManagingAccountDefaultAccountingCode>
+            <!--Optional:-->
+            <sch1:AVC>?</sch1:AVC>
+            <!--Optional:-->
+            <sch1:ReallocMethod>?</sch1:ReallocMethod>
+            <!--Optional:-->
+            <sch1:DefaultAccountingCode>
+               <!--0 to 150 repetitions:-->
+               <sch1:AccountingCodeSegment>
+                  <sch1:SegmentName>?</sch1:SegmentName>
+                  <sch1:SegmentValue>?</sch1:SegmentValue>
+               </sch1:AccountingCodeSegment>
+            </sch1:DefaultAccountingCode>
+            <!--Zero or more repetitions:-->
+            <sch1:AACName>?</sch1:AACName>
+            <!--Optional:-->
+            <sch1:DACComments>?</sch1:DACComments>
+         </sch1:ManagingAccountDefaultAccountingCode>
+         <!--Optional:-->
+         <sch1:AuthLimits>
+            <sch1:AuthLimits>
+               <!--Optional:-->
+               <sch1:CreditLimit>?</sch1:CreditLimit>
+               <!--Optional:-->
+               <sch1:PercentCash>?</sch1:PercentCash>
+               <!--Optional:-->
+               <sch1:QuarterlyLimit>?</sch1:QuarterlyLimit>
+               <!--Optional:-->
+               <sch1:QuarterlyTransLimit>?</sch1:QuarterlyTransLimit>
+               <!--Optional:-->
+               <sch1:YearlyLimit>?</sch1:YearlyLimit>
+               <!--Optional:-->
+               <sch1:YearlyTransLimit>?</sch1:YearlyTransLimit>
+            </sch1:AuthLimits>
+            <sch1:CommonAuthLimits>
+               <!--Optional:-->
+               <sch1:BaseAuthLimits>
+                  <!--Optional:-->
+                  <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                  <!--Optional:-->
+                  <sch1:DailyLimit>?</sch1:DailyLimit>
+                  <!--Optional:-->
+                  <sch1:DailyTransLimit>?</sch1:DailyTransLimit>
+                  <!--Optional:-->
+                  <sch1:CycleLimit>?</sch1:CycleLimit>
+                  <!--Optional:-->
+                  <sch1:CycleTransLimit>?</sch1:CycleTransLimit>
+                  <!--Optional:-->
+                  <sch1:MonthlyLimit>?</sch1:MonthlyLimit>
+                  <!--Optional:-->
+                  <sch1:MonthlyTransLimit>?</sch1:MonthlyTransLimit>
+               </sch1:BaseAuthLimits>
+               <!--Optional:-->
+               <sch1:Velocity>
+                  <!--Optional:-->
+                  <sch1:OtherDollarAmount>?</sch1:OtherDollarAmount>
+                  <!--Optional:-->
+                  <sch1:OtherTranLimit>?</sch1:OtherTranLimit>
+                  <!--Optional:-->
+                  <sch1:RefreshFromDate>?</sch1:RefreshFromDate>
+                  <!--Optional:-->
+                  <sch1:DaysInRefreshCycle>?</sch1:DaysInRefreshCycle>
+                  <!--Optional:-->
+                  <sch1:RefreshToDate>?</sch1:RefreshToDate>
+               </sch1:Velocity>
+            </sch1:CommonAuthLimits>
+            <!--0 to 9 repetitions:-->
+            <sch1:MerchantAuthControls>
+               <sch1:Name>?</sch1:Name>
+               <sch1:AuthAction>?</sch1:AuthAction>
+               <sch1:MerchantLimits>
+                  <!--Optional:-->
+                  <sch1:BaseAuthLimits>
+                     <!--Optional:-->
+                     <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                     <!--Optional:-->
+                     <sch1:DailyLimit>?</sch1:DailyLimit>
+                     <!--Optional:-->
+                     <sch1:DailyTransLimit>?</sch1:DailyTransLimit>
+                     <!--Optional:-->
+                     <sch1:CycleLimit>?</sch1:CycleLimit>
+                     <!--Optional:-->
+                     <sch1:CycleTransLimit>?</sch1:CycleTransLimit>
+                     <!--Optional:-->
+                     <sch1:MonthlyLimit>?</sch1:MonthlyLimit>
+                     <!--Optional:-->
+                     <sch1:MonthlyTransLimit>?</sch1:MonthlyTransLimit>
+                  </sch1:BaseAuthLimits>
+                  <!--Optional:-->
+                  <sch1:Velocity>
+                     <!--Optional:-->
+                     <sch1:OtherDollarAmount>?</sch1:OtherDollarAmount>
+                     <!--Optional:-->
+                     <sch1:OtherTranLimit>?</sch1:OtherTranLimit>
+                     <!--Optional:-->
+                     <sch1:RefreshFromDate>?</sch1:RefreshFromDate>
+                     <!--Optional:-->
+                     <sch1:DaysInRefreshCycle>?</sch1:DaysInRefreshCycle>
+                     <!--Optional:-->
+                     <sch1:RefreshToDate>?</sch1:RefreshToDate>
+                  </sch1:Velocity>
+               </sch1:MerchantLimits>
+            </sch1:MerchantAuthControls>
+            <!--Optional:-->
+            <sch1:AuthLimitsComments>?</sch1:AuthLimitsComments>
+         </sch1:AuthLimits>
+      </sch1:ManagingAccountSetupRequest>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
@@ -189,67 +869,297 @@ Example SOAP response message:
 ```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Header>
-      <pay:PaymentPlusInterface xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0"/>
+      <sch:HRIntegrationSOAP xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd"/>
    </soap:Header>
    <soap:Body>
-      <pay:SUAActivateResponse xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0">
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:USBRequestID>512756113365536000000000000000000000</pay:USBRequestID>
-         <pay:SUAReferenceID>6KN4HBJSnmpj</pay:SUAReferenceID>
-         <pay:SUAAccountNumber>47eM4WGSo8xqOydf</pay:SUAAccountNumber>
-         <pay:SUAExpirationDate>08-2016</pay:SUAExpirationDate>
-      </pay:SUAActivateResponse>
+      <sch:ManagingAccountSetupReply xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
+         <sch:RequestStatus>
+            <sch:USBRequestID>603745035487761900000000000000000000</sch:USBRequestID>
+            <sch:Status>Failure</sch:Status>
+            <sch:Message>Mock Service Created</sch:Message>
+            <sch:AccountData>
+               <sch:AccountID>887850799147</sch:AccountID>
+            </sch:AccountData>
+         </sch:RequestStatus>
+      </sch:ManagingAccountSetupReply>
    </soap:Body>
 </soap:Envelope>
 ```
 
 #### Implementation
 Response Field Details:
-* ClientMsgID: Copied from the request message
 * USBRequestID: Randomly generated numeric field with a length of 36
-* SUAReferenceID: Randomly generated alpha-numeric field with a length of 12
-* SUAAccountNumber: Randomly generated alpha-numeric field with a length of 16
-* SUAExpirationDate: Randomly generated date field between now and the year 2026
+* Status: Randomly picked from Processing, Complete, Failure, Unknown Request, Indeterminate
+* Message: Always returns 'Mock Service Created'
+* AccountID: Randomly generated numeric field with a length of 12
 
-### SUA Modification
+### Maintain Managing Account
 
 #### Request Message
 Example SOAP request message:
 ```
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0" xmlns:pay1="http://www.usbank.com/PaymentPlusments/ws/schemas/PaymentPluswebservice">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/OSB/Schema.xsd" xmlns:sch1="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
    <soapenv:Header>
-      <pay:SUAServiceHeader>
-         <pay:TransactionIdentifier>?</pay:TransactionIdentifier>
-         <!--Optional:-->
-         <pay:MessageIdentifier>?</pay:MessageIdentifier>
-         <!--Optional:-->
-         <pay:ProviderInfo>?</pay:ProviderInfo>
-      </pay:SUAServiceHeader>
-      <pay1:userNameToken>?</pay1:userNameToken>
+      <sch:userNameToken>?</sch:userNameToken>
+      <sch1:USBSOAPHeader>
+         <sch1:TransactionIdentifier>?</sch1:TransactionIdentifier>
+         <sch1:ClientShortName>?</sch1:ClientShortName>
+         <sch1:RequestDate>?</sch1:RequestDate>
+      </sch1:USBSOAPHeader>
    </soapenv:Header>
    <soapenv:Body>
-      <pay:SUAModifyRequest>
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:OrgShortName>ADMIN7</pay:OrgShortName>
-         <pay:PaymentType>PS</pay:PaymentType>
-         <pay:RequestDate>2015-07-20</pay:RequestDate>
-         <pay:ControlNumber>?</pay:ControlNumber>
-         <pay:SUAReferenceID>6KN4HBJSnmpj</pay:SUAReferenceID>
-         <pay:PaymentAmount>100.00</pay:PaymentAmount>
-         <pay:ExpirationDate>2016-08-20</pay:ExpirationDate>
-         <pay:MerchantName>?</pay:MerchantName>
+      <sch1:ManagingAccountMaintenanceRequest>
+         <sch1:ManagingAccountIdentifier>
+            <!--You have a CHOICE of the next 2 items at this level-->
+            <sch1:ManagingAccountID>?</sch1:ManagingAccountID>
+            <sch1:ProcessingHierarchy>
+               <sch1:BankNumber>?</sch1:BankNumber>
+               <sch1:AgentNumber>?</sch1:AgentNumber>
+               <sch1:CompanyNumber>?</sch1:CompanyNumber>
+            </sch1:ProcessingHierarchy>
+         </sch1:ManagingAccountIdentifier>
          <!--Optional:-->
-         <pay:SupplierID>?</pay:SupplierID>
+         <sch1:Demographics>
+            <!--Optional:-->
+            <sch1:Name>
+               <sch1:FirstName>?</sch1:FirstName>
+               <sch1:LastName>?</sch1:LastName>
+               <!--Optional:-->
+               <sch1:MiddleInitial>?</sch1:MiddleInitial>
+            </sch1:Name>
+            <!--Optional:-->
+            <sch1:PersonalInfo>
+               <!--Optional:-->
+               <sch1:DateOfBirth>?</sch1:DateOfBirth>
+               <!--Optional:-->
+               <sch1:IDNumber>?</sch1:IDNumber>
+               <!--Optional:-->
+               <sch1:TaxExemptNumber>?</sch1:TaxExemptNumber>
+            </sch1:PersonalInfo>
+            <!--Optional:-->
+            <sch1:OptionalFields>
+               <!--Optional:-->
+               <sch1:OptionalField1>?</sch1:OptionalField1>
+               <!--Optional:-->
+               <sch1:OptionalField2>?</sch1:OptionalField2>
+               <!--Optional:-->
+               <sch1:OptionalField3>?</sch1:OptionalField3>
+            </sch1:OptionalFields>
+            <!--Optional:-->
+            <sch1:Address>
+               <sch1:AddressLine1>?</sch1:AddressLine1>
+               <!--Optional:-->
+               <sch1:AddressLine2>?</sch1:AddressLine2>
+               <sch1:City>?</sch1:City>
+               <sch1:StateOrProvince>?</sch1:StateOrProvince>
+               <sch1:Country>?</sch1:Country>
+               <sch1:PostalCode>?</sch1:PostalCode>
+            </sch1:Address>
+            <!--Optional:-->
+            <sch1:ContactInfo>
+               <!--Optional:-->
+               <sch1:HomePhone>?</sch1:HomePhone>
+               <!--Optional:-->
+               <sch1:WorkPhone>?</sch1:WorkPhone>
+               <!--Optional:-->
+               <sch1:AlternatePhone>?</sch1:AlternatePhone>
+               <!--Optional:-->
+               <sch1:Fax>?</sch1:Fax>
+               <!--Optional:-->
+               <sch1:EmailAddress>?</sch1:EmailAddress>
+            </sch1:ContactInfo>
+            <!--Optional:-->
+            <sch1:DemographicComments>?</sch1:DemographicComments>
+         </sch1:Demographics>
          <!--Optional:-->
-         <pay:SupplierPostalCode>68028</pay:SupplierPostalCode>
+         <sch1:AccountInfo>
+            <!--Optional:-->
+            <sch1:AccountStatus>?</sch1:AccountStatus>
+            <!--Optional:-->
+            <sch1:OrganizationName>?</sch1:OrganizationName>
+            <!--Optional:-->
+            <sch1:ReportingHierarchy>
+               <!--Optional:-->
+               <sch1:ReportingLevel1>?</sch1:ReportingLevel1>
+               <!--Optional:-->
+               <sch1:ReportingLevel2>?</sch1:ReportingLevel2>
+               <!--Optional:-->
+               <sch1:ReportingLevel3>?</sch1:ReportingLevel3>
+               <!--Optional:-->
+               <sch1:ReportingLevel4>?</sch1:ReportingLevel4>
+               <!--Optional:-->
+               <sch1:ReportingLevel5>?</sch1:ReportingLevel5>
+               <!--Optional:-->
+               <sch1:ReportingLevel6>?</sch1:ReportingLevel6>
+               <!--Optional:-->
+               <sch1:ReportingLevel7>?</sch1:ReportingLevel7>
+            </sch1:ReportingHierarchy>
+            <!--Optional:-->
+            <sch1:Dates>
+               <!--Optional:-->
+               <sch1:TempAuthStartDate>?</sch1:TempAuthStartDate>
+               <!--Optional:-->
+               <sch1:TempAuthEndDate>?</sch1:TempAuthEndDate>
+            </sch1:Dates>
+            <!--Optional:-->
+            <sch1:AccountInfoComments>?</sch1:AccountInfoComments>
+         </sch1:AccountInfo>
          <!--Optional:-->
-         <pay:Notes>?</pay:Notes>
-         <!--0 to 20 repetitions:-->
-         <pay:CustomAttribute>
-            <pay:AttributeKey>?</pay:AttributeKey>
-            <pay:AttributeValue>?</pay:AttributeValue>
-         </pay:CustomAttribute>
-      </pay:SUAModifyRequest>
+         <sch1:ExtractInfo>
+            <!--Optional:-->
+            <sch1:CostTransfer>?</sch1:CostTransfer>
+            <!--Optional:-->
+            <sch1:SendCostTransfer>?</sch1:SendCostTransfer>
+            <!--Optional:-->
+            <sch1:CreditInv>?</sch1:CreditInv>
+            <!--Optional:-->
+            <sch1:SendCreditInv>?</sch1:SendCreditInv>
+            <!--Optional:-->
+            <sch1:Inv>?</sch1:Inv>
+            <!--Optional:-->
+            <sch1:SendInv>?</sch1:SendInv>
+            <!--Optional:-->
+            <sch1:Oblig>?</sch1:Oblig>
+            <!--Optional:-->
+            <sch1:SendOblig>?</sch1:SendOblig>
+            <!--Optional:-->
+            <sch1:ExtractInfoComments>?</sch1:ExtractInfoComments>
+         </sch1:ExtractInfo>
+         <!--Optional:-->
+         <sch1:ManagingAccountDefaultAccountingCode>
+            <!--Optional:-->
+            <sch1:AVC>?</sch1:AVC>
+            <!--Optional:-->
+            <sch1:ReallocMethod>?</sch1:ReallocMethod>
+            <!--Optional:-->
+            <sch1:SiteCode>?</sch1:SiteCode>
+            <!--Optional:-->
+            <sch1:DefaultAccountingCode>
+               <!--0 to 150 repetitions:-->
+               <sch1:AccountingCodeSegment>
+                  <sch1:SegmentName>?</sch1:SegmentName>
+                  <sch1:SegmentValue>?</sch1:SegmentValue>
+               </sch1:AccountingCodeSegment>
+            </sch1:DefaultAccountingCode>
+            <!--Optional:-->
+            <sch1:FDAC>
+               <!--0 to 150 repetitions:-->
+               <sch1:AccountingCodeSegment>
+                  <sch1:SegmentName>?</sch1:SegmentName>
+                  <sch1:SegmentValue>?</sch1:SegmentValue>
+               </sch1:AccountingCodeSegment>
+            </sch1:FDAC>
+            <!--Optional:-->
+            <sch1:TDAC>
+               <!--0 to 150 repetitions:-->
+               <sch1:AccountingCodeSegment>
+                  <sch1:SegmentName>?</sch1:SegmentName>
+                  <sch1:SegmentValue>?</sch1:SegmentValue>
+               </sch1:AccountingCodeSegment>
+            </sch1:TDAC>
+            <!--Optional:-->
+            <sch1:AlternateAccountingCodes>
+               <!--1 or more repetitions:-->
+               <sch1:AlternateAccountingCode>
+                  <sch1:AACName>?</sch1:AACName>
+                  <sch1:Action>?</sch1:Action>
+               </sch1:AlternateAccountingCode>
+            </sch1:AlternateAccountingCodes>
+            <!--Optional:-->
+            <sch1:DACComments>?</sch1:DACComments>
+         </sch1:ManagingAccountDefaultAccountingCode>
+         <!--Optional:-->
+         <sch1:AuthLimits>
+            <!--Optional:-->
+            <sch1:AuthLimits>
+               <!--Optional:-->
+               <sch1:CreditLimit>?</sch1:CreditLimit>
+               <!--Optional:-->
+               <sch1:PercentCash>?</sch1:PercentCash>
+               <!--Optional:-->
+               <sch1:QuarterlyLimit>?</sch1:QuarterlyLimit>
+               <!--Optional:-->
+               <sch1:QuarterlyTransLimit>?</sch1:QuarterlyTransLimit>
+               <!--Optional:-->
+               <sch1:YearlyLimit>?</sch1:YearlyLimit>
+               <!--Optional:-->
+               <sch1:YearlyTransLimit>?</sch1:YearlyTransLimit>
+            </sch1:AuthLimits>
+            <!--Optional:-->
+            <sch1:CommonAuthLimits>
+               <!--Optional:-->
+               <sch1:BaseAuthLimits>
+                  <!--Optional:-->
+                  <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                  <!--Optional:-->
+                  <sch1:DailyLimit>?</sch1:DailyLimit>
+                  <!--Optional:-->
+                  <sch1:DailyTransLimit>?</sch1:DailyTransLimit>
+                  <!--Optional:-->
+                  <sch1:CycleLimit>?</sch1:CycleLimit>
+                  <!--Optional:-->
+                  <sch1:CycleTransLimit>?</sch1:CycleTransLimit>
+                  <!--Optional:-->
+                  <sch1:MonthlyLimit>?</sch1:MonthlyLimit>
+                  <!--Optional:-->
+                  <sch1:MonthlyTransLimit>?</sch1:MonthlyTransLimit>
+               </sch1:BaseAuthLimits>
+               <!--Optional:-->
+               <sch1:Velocity>
+                  <!--Optional:-->
+                  <sch1:OtherDollarAmount>?</sch1:OtherDollarAmount>
+                  <!--Optional:-->
+                  <sch1:OtherTranLimit>?</sch1:OtherTranLimit>
+                  <!--Optional:-->
+                  <sch1:RefreshFromDate>?</sch1:RefreshFromDate>
+                  <!--Optional:-->
+                  <sch1:DaysInRefreshCycle>?</sch1:DaysInRefreshCycle>
+                  <!--Optional:-->
+                  <sch1:RefreshToDate>?</sch1:RefreshToDate>
+               </sch1:Velocity>
+            </sch1:CommonAuthLimits>
+            <!--0 to 9 repetitions:-->
+            <sch1:MerchantAuthControls>
+               <sch1:Action>?</sch1:Action>
+               <sch1:Name>?</sch1:Name>
+               <sch1:AuthAction>?</sch1:AuthAction>
+               <sch1:MerchantLimits>
+                  <!--Optional:-->
+                  <sch1:BaseAuthLimits>
+                     <!--Optional:-->
+                     <sch1:SinglePurchaseLimit>?</sch1:SinglePurchaseLimit>
+                     <!--Optional:-->
+                     <sch1:DailyLimit>?</sch1:DailyLimit>
+                     <!--Optional:-->
+                     <sch1:DailyTransLimit>?</sch1:DailyTransLimit>
+                     <!--Optional:-->
+                     <sch1:CycleLimit>?</sch1:CycleLimit>
+                     <!--Optional:-->
+                     <sch1:CycleTransLimit>?</sch1:CycleTransLimit>
+                     <!--Optional:-->
+                     <sch1:MonthlyLimit>?</sch1:MonthlyLimit>
+                     <!--Optional:-->
+                     <sch1:MonthlyTransLimit>?</sch1:MonthlyTransLimit>
+                  </sch1:BaseAuthLimits>
+                  <!--Optional:-->
+                  <sch1:Velocity>
+                     <!--Optional:-->
+                     <sch1:OtherDollarAmount>?</sch1:OtherDollarAmount>
+                     <!--Optional:-->
+                     <sch1:OtherTranLimit>?</sch1:OtherTranLimit>
+                     <!--Optional:-->
+                     <sch1:RefreshFromDate>?</sch1:RefreshFromDate>
+                     <!--Optional:-->
+                     <sch1:DaysInRefreshCycle>?</sch1:DaysInRefreshCycle>
+                     <!--Optional:-->
+                     <sch1:RefreshToDate>?</sch1:RefreshToDate>
+                  </sch1:Velocity>
+               </sch1:MerchantLimits>
+            </sch1:MerchantAuthControls>
+            <!--Optional:-->
+            <sch1:AuthLimitsComments>?</sch1:AuthLimitsComments>
+         </sch1:AuthLimits>
+      </sch1:ManagingAccountMaintenanceRequest>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
@@ -259,56 +1169,50 @@ Example SOAP response message:
 ```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Header>
-      <pay:PaymentPlusInterface xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0"/>
+      <sch:HRIntegrationSOAP xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd"/>
    </soap:Header>
    <soap:Body>
-      <pay:SUAModifyResponse xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0">
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:USBRequestID>505410851013440800000000000000000000</pay:USBRequestID>
-         <pay:ReferenceID>LnUI5R8Br3</pay:ReferenceID>
-         <pay:PaymentType>PS</pay:PaymentType>
-         <pay:ControlNumber>rYjT6</pay:ControlNumber>
-         <pay:SUAReferenceID>6KN4HBJSnmpj</pay:SUAReferenceID>
-         <pay:ExpirationDate>2016-08-20</pay:ExpirationDate>
-         <pay:MerchantName>?</pay:MerchantName>
-      </pay:SUAModifyResponse>
+      <sch:ManagingAccountMaintenanceReply xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
+         <sch:RequestStatus>
+            <sch:USBRequestID>530013533957185340000000000000000000</sch:USBRequestID>
+            <sch:Status>Indeterminate</sch:Status>
+            <sch:Message>Mock Service Created</sch:Message>
+            <sch:AccountData>
+               <sch:AccountID>628069015107</sch:AccountID>
+            </sch:AccountData>
+         </sch:RequestStatus>
+      </sch:ManagingAccountMaintenanceReply>
    </soap:Body>
 </soap:Envelope>
 ```
 
 #### Implementation
 Response Field Details:
-* ClientMsgID: Copied from the request message
 * USBRequestID: Randomly generated numeric field with a length of 36
-* ReferenceID: Randomly generated alpha-numeric field with a length of 10
-* PaymentType: Copied from the request message
-* ControlNumber: Randomly generated alpha-numeric field with a length of 16
-* SUAReferenceID: Randomly generated alpha-numeric field with a length of 12
-* ExpirationDate: Copied from the request message
-* MerchantName: Randomly generated alpha-numeric field with a length of 16
+* Status: Randomly picked from Processing, Complete, Failure, Unknown Request, Indeterminate
+* Message: Always returns 'Mock Service Created'
+* AccountID: Randomly generated numeric field with a length of 12
 
-### SUA Request CSC
+### Status Inquiry
 
 #### Request Message
 Example SOAP request message:
 ```
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0" xmlns:pay1="http://www.usbank.com/PaymentPlusments/ws/schemas/PaymentPluswebservice">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/OSB/Schema.xsd" xmlns:sch1="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
    <soapenv:Header>
-      <pay:SUAServiceHeader>
-         <pay:TransactionIdentifier>?</pay:TransactionIdentifier>
-         <!--Optional:-->
-         <pay:MessageIdentifier>?</pay:MessageIdentifier>
-         <!--Optional:-->
-         <pay:ProviderInfo>?</pay:ProviderInfo>
-      </pay:SUAServiceHeader>
-      <pay1:userNameToken>?</pay1:userNameToken>
+      <sch:userNameToken>?</sch:userNameToken>
+      <sch1:USBSOAPHeader>
+         <sch1:TransactionIdentifier>?</sch1:TransactionIdentifier>
+         <sch1:ClientShortName>?</sch1:ClientShortName>
+         <sch1:RequestDate>?</sch1:RequestDate>
+      </sch1:USBSOAPHeader>
    </soapenv:Header>
    <soapenv:Body>
-      <pay:SUACSCRequest>
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:OrgShortName>ADMIN7</pay:OrgShortName>
-         <pay:SUAReferenceID>6KN4HBJSnmpj</pay:SUAReferenceID>
-      </pay:SUACSCRequest>
+      <sch1:GetStatusRequest>
+         <!--1 to 25 repetitions:-->
+         <sch1:USBRequestID>559561896399713300000000000000000000</sch1:USBRequestID>
+         <sch1:USBRequestID>445764276567815550000000000000000000</sch1:USBRequestID>
+      </sch1:GetStatusRequest>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
@@ -318,24 +1222,35 @@ Example SOAP response message:
 ```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Header>
-      <pay:PaymentPlusInterface xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0"/>
+      <sch:HRIntegrationSOAP xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd"/>
    </soap:Header>
    <soap:Body>
-      <pay:SUACSCResponse xmlns:pay="http://soa.usbank.com/PaymentPlus/PaymentPlusInterface_V_1_0">
-         <pay:ClientMsgID>WEBSERVICEPRJ0000000000001213SJMARSH</pay:ClientMsgID>
-         <pay:USBRequestID>452681787153785900000000000000000000</pay:USBRequestID>
-         <pay:SUAReferenceID>6KN4HBJSnmpj</pay:SUAReferenceID>
-         <pay:SecurityCode>73685</pay:SecurityCode>
-      </pay:SUACSCResponse>
+      <sch:GetStatusReply xmlns:sch="http://access.usbank.com/CPSEAI_HR_INTEG/Schema.xsd">
+         <sch:RequestStatus>
+            <sch:USBRequestID>559561896399713300000000000000000000</sch:USBRequestID>
+            <sch:Status>Processing</sch:Status>
+            <sch:Message>Mock Service Created</sch:Message>
+            <sch:AccountData>
+               <sch:AccountID>525960103533</sch:AccountID>
+            </sch:AccountData>
+         </sch:RequestStatus>
+         <sch:RequestStatus>
+            <sch:USBRequestID>445764276567815550000000000000000000</sch:USBRequestID>
+            <sch:Status>Processing</sch:Status>
+            <sch:Message>Mock Service Created</sch:Message>
+            <sch:AccountData>
+               <sch:AccountID>118510015263</sch:AccountID>
+            </sch:AccountData>
+         </sch:RequestStatus>
+      </sch:GetStatusReply>
    </soap:Body>
 </soap:Envelope>
 ```
 
 #### Implementation
 Response Field Details:
-* ClientMsgID: Copied from the request message
 * USBRequestID: Randomly generated numeric field with a length of 36
-* SUAReferenceID: Randomly generated alpha-numeric field with a length of 12
-* SecurityCode: Randomly generated numeric field with a length of 4
+* Status: Randomly picked from Processing, Complete, Failure, Unknown Request, Indeterminate
+* Message: Always returns 'Mock Service Created'
+* AccountID: Randomly generated numeric field with a length of 12
 
-## HR Integration
